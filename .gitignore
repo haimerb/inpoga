@@ -2,3 +2,4 @@
 __pycache__/
 *.pyc
 generate-favicons.py
+AGENTS.md
