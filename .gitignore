@@ -6,3 +6,7 @@ optimize-media.py
 process-videos.py
 AGENTS.md
 media/
+*.pem
+*-PrivateKey*
+*-certificates*
+Nuevo Documento de texto.txt
