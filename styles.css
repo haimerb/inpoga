@@ -1110,6 +1110,12 @@ img {
   max-width: none;
 }
 
+.godaddy-seal {
+  margin-top: 0.8rem;
+  display: flex;
+  justify-content: center;
+}
+
 /* ---------- Social Icons ---------- */
 .social-icons {
   display: flex;
