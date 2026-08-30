@@ -881,6 +881,78 @@ img {
   margin-top: 0.4rem;
 }
 
+/* Honeypot - hidden from humans, visible to bots */
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  pointer-events: none;
+  tab-index: -1;
+}
+
+/* Form field errors */
+.field-error {
+  display: block;
+  font-size: 0.78rem;
+  color: #d32f2f;
+  min-height: 1rem;
+  line-height: 1;
+  margin-top: 0.15rem;
+}
+
+.form-field input[aria-invalid="true"],
+.form-field select[aria-invalid="true"],
+.form-field textarea[aria-invalid="true"] {
+  border-color: #d32f2f;
+}
+
+.form-field input[aria-invalid="true"]:focus,
+.form-field select[aria-invalid="true"]:focus,
+.form-field textarea[aria-invalid="true"]:focus {
+  box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.12);
+}
+
+.optional {
+  font-weight: 400;
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+}
+
+/* Form success / error messages */
+.form-success,
+.form-error-global {
+  margin-top: 1.2rem;
+  padding: 1rem 1.2rem;
+  border-radius: 0.7rem;
+  font-size: 0.95rem;
+}
+
+.form-success {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
+}
+
+.form-success p,
+.form-error-global p {
+  margin: 0;
+  max-width: none;
+}
+
+.form-error-global {
+  background: #fbe9e7;
+  color: #c62828;
+  border: 1px solid #ef9a9a;
+}
+
+.contact-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .contacto-info {
   margin-top: 2.6rem;
   display: grid;
@@ -1033,6 +1105,62 @@ img {
   max-width: none;
 }
 
+/* ---------- Social Icons ---------- */
+.social-icons {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.2rem;
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.75);
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.social-icons a:hover {
+  background: var(--gold);
+  color: var(--blue-deep);
+  transform: translateY(-2px);
+}
+
+.social-icons a:active {
+  transform: scale(0.95);
+}
+
+.social-icons svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .social-icons a {
+    transition: none;
+  }
+}
+
+/* ---------- Map ---------- */
+.map-wrap {
+  margin-top: 2rem;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--line);
+}
+
+.map-wrap iframe {
+  display: block;
+  width: 100%;
+  height: 360px;
+}
+
 /* ---------- Reveal on scroll ---------- */
 .reveal {
   opacity: 0;
@@ -1160,6 +1288,11 @@ img {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
+
+  .map-wrap iframe {
+    height: 260px;
+  }
+}
 
   .button {
     width: 100%;
