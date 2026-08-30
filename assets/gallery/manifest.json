@@ -1,0 +1,44 @@
+{
+  "videos": [
+    {
+      "src": "assets/gallery/video-01.mp4",
+      "poster": "assets/gallery/video-01-poster.jpg",
+      "orig": "01536afc-6347-447a-a6ac-7be851c5f90c.MP4"
+    },
+    {
+      "src": "assets/gallery/video-02.mp4",
+      "poster": "assets/gallery/video-02-poster.jpg",
+      "orig": "03535675-4dc5-43b3-b997-c3890541e8c1.MP4"
+    },
+    {
+      "src": "assets/gallery/video-03.mp4",
+      "poster": "assets/gallery/video-03-poster.jpg",
+      "orig": "038d12cc-6bbf-45f2-9884-20434103add0.MP4"
+    },
+    {
+      "src": "assets/gallery/video-04.mp4",
+      "poster": "assets/gallery/video-04-poster.jpg",
+      "orig": "03bebfc1-c4ef-4167-a90f-a1973640b116.MP4"
+    },
+    {
+      "src": "assets/gallery/video-05.mp4",
+      "poster": "assets/gallery/video-05-poster.jpg",
+      "orig": "049dc345-fa2a-4b36-9243-70661359855b.MP4"
+    },
+    {
+      "src": "assets/gallery/video-06.mp4",
+      "poster": "assets/gallery/video-06-poster.jpg",
+      "orig": "096bf347-3099-42be-8401-602966ca5e9c.MP4"
+    },
+    {
+      "src": "assets/gallery/video-07.mp4",
+      "poster": "assets/gallery/video-07-poster.jpg",
+      "orig": "0c3e1c1b-ee2b-4a7d-b037-1ebb6b89b421.MP4"
+    },
+    {
+      "src": "assets/gallery/video-08.mp4",
+      "poster": "assets/gallery/video-08-poster.jpg",
+      "orig": "1586151c-2635-4025-9f22-90d17d3fedd3.MP4"
+    }
+  ]
+}

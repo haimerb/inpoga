@@ -313,6 +313,34 @@
         </div>
       </section>
 
+      <section class="section gallery-section" id="galeria">
+        <div class="container">
+          <div class="section-heading center reveal">
+            <span class="section-tag">Nuestra gente</span>
+            <h2>Así vivimos la ruta.</h2>
+            <p class="heading-note">Imágenes y testimonios de las actividades de la Corporación Gaviotas en territorio.</p>
+          </div>
+        </div>
+        <div class="gallery-track-wrap">
+          <div class="gallery-track reveal">
+            <figure class="gallery-item"><img src="assets/gallery/gaviotas-12.jpg" alt="Equipo de la Corporación Gaviotas con el estandarte INPOGA" loading="lazy" /></figure>
+            <figure class="gallery-item"><img src="assets/gallery/gaviotas-20.jpg" alt="Reunión de trabajo de la Corporación Gaviotas" loading="lazy" /></figure>
+            <figure class="gallery-item"><img src="assets/gallery/gaviotas-29.jpg" alt="Actividad comunitaria en el parque" loading="lazy" /></figure>
+            <figure class="gallery-item"><img src="assets/gallery/gaviotas-04.jpg" alt="Taller de oficios para mujeres" loading="lazy" /></figure>
+            <figure class="gallery-item"><img src="assets/gallery/gaviotas-21.jpg" alt="Equipo reunido en la sede" loading="lazy" /></figure>
+            <figure class="gallery-item"><img src="assets/gallery/gaviotas-16.jpg" alt="Capacitación en emprendimiento" loading="lazy" /></figure>
+            <figure class="gallery-item video-item" data-video="assets/gallery/video-01.mp4" data-poster="assets/gallery/video-01-poster.jpg">
+              <img src="assets/gallery/video-01-poster.jpg" alt="Video: actividad de la Corporación Gaviotas" loading="lazy" />
+              <span class="play-icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="23" stroke="#fff" stroke-width="2" opacity="0.85"/><polygon points="19,15 35,24 19,33" fill="#fff" opacity="0.9"/></svg>
+              </span>
+            </figure>
+            <figure class="gallery-item"><img src="assets/gallery/gaviotas-31.jpg" alt="Trabajo en comunidad" loading="lazy" /></figure>
+            <figure class="gallery-item"><img src="assets/gallery/gaviotas-19.jpg" alt="Capacitación en territorio" loading="lazy" /></figure>
+          </div>
+        </div>
+      </section>
+
       <section class="section ejes-section">
         <div class="container">
           <div class="section-heading center reveal">
@@ -511,6 +539,46 @@
       } else {
         document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-visible"));
       }
+
+      /* Video modal */
+      (function () {
+        const modal = document.createElement("div");
+        modal.className = "video-modal";
+        modal.innerHTML = '<button class="video-modal-close" aria-label="Cerrar">&times;</button><video controls></video>';
+        document.body.appendChild(modal);
+
+        const video = modal.querySelector("video");
+        const closeBtn = modal.querySelector(".video-modal-close");
+
+        function openModal(src, poster) {
+          video.src = src;
+          if (poster) video.poster = poster;
+          video.play();
+          modal.classList.add("is-open");
+          document.body.style.overflow = "hidden";
+        }
+
+        function closeModal() {
+          video.pause();
+          video.src = "";
+          modal.classList.remove("is-open");
+          document.body.style.overflow = "";
+        }
+
+        closeBtn.addEventListener("click", closeModal);
+        modal.addEventListener("click", function (e) {
+          if (e.target === modal) closeModal();
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
+        });
+
+        document.querySelectorAll(".video-item").forEach(function (item) {
+          item.addEventListener("click", function () {
+            openModal(item.dataset.video, item.dataset.poster);
+          });
+        });
+      })();
     </script>
   </body>
 </html>
