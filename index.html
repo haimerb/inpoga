@@ -534,19 +534,16 @@
             </p>
           </div>
 
-          <form class="contact-form reveal" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+          <form class="contact-form reveal" id="contact-form" action="#" method="get" novalidate>
             <input type="text" name="_gotcha" class="honeypot" tabindex="-1" autocomplete="off" />
-            <input type="hidden" name="_subject" value="Nuevo mensaje desde la web — Corporación Gaviotas" />
-            <input type="hidden" name="_captcha" value="true" />
-            <input type="hidden" name="_template" value="table" />
             <div class="form-row">
               <div class="form-field">
-                <label for="nombre">Nombre</label>
+                <label for="nombre">Nombre <span class="required">*</span></label>
                 <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required minlength="2" autocomplete="name" />
                 <span class="field-error" aria-live="polite"></span>
               </div>
               <div class="form-field">
-                <label for="email">Correo electrónico</label>
+                <label for="email">Correo electrónico <span class="required">*</span></label>
                 <input type="email" id="email" name="email" placeholder="tu@correo.com" required autocomplete="email" />
                 <span class="field-error" aria-live="polite"></span>
               </div>
@@ -558,28 +555,28 @@
                 <span class="field-error" aria-live="polite"></span>
               </div>
               <div class="form-field">
-                <label for="asunto">¿En qué podés aportar?</label>
+                <label for="asunto">¿En qué podés aportar? <span class="required">*</span></label>
                 <select id="asunto" name="asunto" required>
                   <option value="">Seleccioná una opción</option>
-                  <option value="oficio">Quiero participar con mi oficio</option>
-                  <option value="voluntaria">Quiero ser voluntaria</option>
-                  <option value="aliada">Soy una organización aliada</option>
-                  <option value="otro">Otro</option>
+                  <option value="Oficio">Quiero participar con mi oficio</option>
+                  <option value="Voluntaria">Quiero ser voluntaria</option>
+                  <option value="Aliada">Soy una organización aliada</option>
+                  <option value="Otro">Otro</option>
                 </select>
                 <span class="field-error" aria-live="polite"></span>
               </div>
             </div>
             <div class="form-field">
-              <label for="mensaje">Mensaje</label>
+              <label for="mensaje">Mensaje <span class="required">*</span></label>
               <textarea id="mensaje" name="mensaje" rows="4" placeholder="Contanos un poco sobre vos y tu comunidad…" required minlength="10"></textarea>
               <span class="field-error" aria-live="polite"></span>
             </div>
             <button class="button button-primary" type="submit">Enviar mensaje</button>
             <div class="form-success" hidden>
-              <p>Mensaje enviado correctamente. ¡Gracias por escribirnos! Te responderemos pronto.</p>
+              <p>Mensaje preparado. Se abrió tu cliente de correo con los datos del formulario. Solo tenés que presionar <strong>Enviar</strong>.</p>
             </div>
             <div class="form-error-global" hidden>
-              <p>Ocurrió un error al enviar. Intentá de nuevo o escribinos directamente a <a href="mailto:contacto@corpogaviotas.org">contacto@corpogaviotas.org</a>.</p>
+              <p>No se pudo abrir el correo. Escribinos directamente a <a href="mailto:contacto@corpogaviotas.org">contacto@corpogaviotas.org</a> o al <a href="tel:+573202205497">+57 320 220 5497</a>.</p>
             </div>
           </form>
 
@@ -745,9 +742,10 @@
         });
       })();
 
-      /* Form validation + anti-spam */
+      /* Form mailto + anti-spam + validation */
       (function () {
-        var form = document.querySelector(".contact-form");
+        var TO = "contacto@corpogaviotas.org";
+        var form = document.getElementById("contact-form");
         if (!form) return;
         var submitBtn = form.querySelector('button[type="submit"]');
         var successDiv = form.querySelector(".form-success");
@@ -780,6 +778,10 @@
           return true;
         }
 
+        function encode(str) {
+          return encodeURIComponent(str).replace(/%20/g, "+").replace(/%0A/g, "%0D%0A");
+        }
+
         form.querySelectorAll("input, select, textarea").forEach(function (field) {
           field.addEventListener("blur", function () { validateField(field); });
           field.addEventListener("input", function () {
@@ -798,26 +800,28 @@
           });
           if (!valid) return;
 
-          submitBtn.disabled = true;
-          submitBtn.textContent = "Enviando…";
+          var nombre = form.querySelector("#nombre").value.trim();
+          var email = form.querySelector("#email").value.trim();
+          var telefono = form.querySelector("#telefono").value.trim();
+          var asunto = form.querySelector("#asunto").value;
+          var mensaje = form.querySelector("#mensaje").value.trim();
 
-          var formData = new FormData(form);
-          fetch(form.action, {
-            method: "POST",
-            body: formData,
-            headers: { Accept: "application/json" }
-          }).then(function (resp) {
-            if (resp.ok) {
-              form.style.display = "none";
-              successDiv.hidden = false;
-            } else {
-              throw new Error("Error");
-            }
-          }).catch(function () {
+          var subject = "Contacto desde la web — " + asunto;
+          var body = "Nombre: " + nombre + "\r\n";
+          body += "Correo: " + email + "\r\n";
+          if (telefono) body += "Teléfono: " + telefono + "\r\n";
+          body += "Motivo: " + asunto + "\r\n\r\n";
+          body += "Mensaje:\r\n" + mensaje;
+
+          var mailto = "mailto:" + TO + "?subject=" + encode(subject) + "&body=" + encode(body);
+
+          try {
+            window.location.href = mailto;
+            form.style.display = "none";
+            successDiv.hidden = false;
+          } catch (err) {
             errorDiv.hidden = false;
-            submitBtn.disabled = false;
-            submitBtn.textContent = "Enviar mensaje";
-          });
+          }
         });
       })();
     </script>

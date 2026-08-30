@@ -921,6 +921,11 @@ img {
   font-size: 0.82rem;
 }
 
+.required {
+  color: #d32f2f;
+  font-weight: 400;
+}
+
 /* Form success / error messages */
 .form-success,
 .form-error-global {
@@ -1292,7 +1297,6 @@ img {
   .map-wrap iframe {
     height: 260px;
   }
-}
 
   .button {
     width: 100%;
