@@ -9,4 +9,7 @@ media/
 *.pem
 *-PrivateKey*
 *-certificates*
-Nuevo Documento de texto.txt
+*.ppt
+*.pptx
+*.pdf
+*.txt
