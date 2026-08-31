@@ -71,14 +71,14 @@ export default function Contacto() {
       bgcolor: '#fff',
       '& fieldset': { borderColor: 'rgba(16,35,59,0.18)', borderWidth: 1.5 },
       '&:hover fieldset': { borderColor: 'rgba(16,35,59,0.3)' },
-      '&.Mui-focused fieldset': { borderColor: '#1a7cc7', borderWidth: 1.5, boxShadow: '0 0 0 3px rgba(10,93,158,0.12)' },
+      '&.Mui-focused fieldset': { borderColor: 'secondary.main', borderWidth: 1.5, boxShadow: '0 0 0 3px rgba(10,93,158,0.12)' },
     },
     '& .MuiInputLabel-root': { fontSize: '0.85rem', fontWeight: 600, color: 'primary.main' },
   }
 
   return (
     <Box id="contacto" component="section" sx={{ py: { xs: 3.5, md: 6 }, bgcolor: '#fff', borderTop: '1px solid rgba(26,26,26,0.08)' }}>
-      <Box sx={{ maxWidth: 1080, mx: 'auto', px: { xs: 2, sm: 3 } }}>
+      <Box sx={{ maxWidth: 1140, mx: 'auto', px: { xs: 2, sm: 3 } }}>
         <RevealOnScroll sx={{ mb: 4 }}>
           <Box className="section-tag-bottom">Contacto</Box>
           <Typography variant="h2" sx={{ mt: 1.2, mb: 1 }}>Sumate. Escribinos.</Typography>
@@ -99,14 +99,14 @@ export default function Contacto() {
           >
             <input type="text" name="_gotcha" className="honeypot" tabIndex={-1} autoComplete="off" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
 
-            <Grid container spacing={1.6}>
+            <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth required label="Nombre" placeholder="Tu nombre completo"
                   value={form.nombre} onChange={handleChange('nombre')}
                   error={!!errors.nombre} helperText={errors.nombre}
                   inputProps={{ minLength: 2, autoComplete: 'name' }}
-                  sx={{ ...fieldSx, mb: 1.5 }}
+                  sx={fieldSx}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -115,7 +115,7 @@ export default function Contacto() {
                   value={form.email} onChange={handleChange('email')}
                   error={!!errors.email} helperText={errors.email}
                   inputProps={{ autoComplete: 'email' }}
-                  sx={{ ...fieldSx, mb: 1.5 }}
+                  sx={fieldSx}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -124,7 +124,7 @@ export default function Contacto() {
                   value={form.telefono} onChange={handleChange('telefono')}
                   error={!!errors.telefono} helperText={errors.telefono}
                   inputProps={{ pattern: '[\\+]?[0-9\\s\\-\\(\\)]{7,15}', autoComplete: 'tel' }}
-                  sx={{ ...fieldSx, mb: 1.5 }}
+                  sx={fieldSx}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -132,7 +132,7 @@ export default function Contacto() {
                   fullWidth required select label="¿En qué podés aportar?"
                   value={form.asunto} onChange={handleChange('asunto')}
                   error={!!errors.asunto} helperText={errors.asunto}
-                  sx={{ ...fieldSx, mb: 1.5 }}
+                  sx={fieldSx}
                 >
                   {asuntoOptions.map((opt) => (
                     <MenuItem key={opt.value} value={opt.value}>{opt.label}</MenuItem>
@@ -147,14 +147,14 @@ export default function Contacto() {
               value={form.mensaje} onChange={handleChange('mensaje')}
               error={!!errors.mensaje} helperText={errors.mensaje}
               inputProps={{ minLength: 10 }}
-              sx={{ ...fieldSx, mb: 1 }}
+              sx={{ ...fieldSx, mt: 2 }}
             />
 
             <Button
               type="submit" variant="contained"
               sx={{
-                mt: 0.5, borderRadius: '999px', px: 2.8, py: 1.3, fontWeight: 700, fontSize: '0.96rem',
-                bgcolor: 'primary.main', borderBottom: '3px solid #ffd200',
+                mt: 2, borderRadius: '999px', px: 2.8, py: 1.3, fontWeight: 700, fontSize: '0.96rem',
+                bgcolor: 'primary.main', borderBottom: '3px solid gold.main',
                 boxShadow: '0 12px 26px rgba(12,79,130,0.24)', textTransform: 'none',
                 '&:hover': { bgcolor: '#0a4270', boxShadow: '0 18px 34px rgba(12,79,130,0.3)' },
               }}
@@ -174,8 +174,8 @@ export default function Contacto() {
               <Box sx={{ mt: 1.5, p: 1.5, borderRadius: '0.7rem', bgcolor: '#fbe9e7', color: '#c62828', border: '1px solid #ef9a9a', fontSize: '0.95rem' }}>
                 <Typography sx={{ m: 0 }}>
                   No se pudo abrir el correo. Escribinos directamente a{' '}
-                  <Box component="a" href="mailto:contacto@corpogaviotas.org" sx={{ color: '#1a7cc7', fontWeight: 600 }}>contacto@corpogaviotas.org</Box>{' '}
-                  o al <Box component="a" href="tel:+573202205497" sx={{ color: '#1a7cc7', fontWeight: 600 }}>+57 320 220 5497</Box>.
+                  <Box component="a" href="mailto:contacto@corpogaviotas.org" sx={{ color: 'secondary.main', fontWeight: 600 }}>contacto@corpogaviotas.org</Box>{' '}
+                  o al <Box component="a" href="tel:+573202205497" sx={{ color: 'secondary.main', fontWeight: 600 }}>+57 320 220 5497</Box>.
                 </Typography>
               </Box>
             )}
@@ -183,7 +183,7 @@ export default function Contacto() {
         </RevealOnScroll>
 
         <RevealOnScroll>
-          <Grid container spacing={2.2} sx={{ pt: 2.5, borderTop: '1px solid rgba(26,26,26,0.08)' }}>
+          <Grid container spacing={2} sx={{ pt: 2.5, borderTop: '1px solid rgba(26,26,26,0.08)' }}>
             {[
               { label: 'Ubicación', text: 'Carrera 25 # 42 a 28\nCali, Valle del Cauca, Colombia' },
               { label: 'Correo', text: null, link: 'mailto:contacto@corpogaviotas.org', linkText: 'contacto@corpogaviotas.org' },
@@ -191,15 +191,15 @@ export default function Contacto() {
             ].map((info) => (
               <Grid item xs={12} sm={6} md={4} key={info.label}>
                 <Box sx={{ transition: 'transform 0.3s ease', '&:hover': { transform: 'translateX(4px)' } }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.7, fontFamily: '"IBM Plex Mono", monospace', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#1a7cc7', mb: 0.6 }}>
-                    <Box sx={{ width: '0.55rem', height: '0.55rem', borderRadius: '50%', bgcolor: '#ffd200', flex: 'none' }} />
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.7, fontFamily: '"IBM Plex Mono", monospace', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'secondary.main', mb: 0.6 }}>
+                    <Box sx={{ width: '0.55rem', height: '0.55rem', borderRadius: '50%', bgcolor: 'gold.main', flex: 'none' }} />
                     {info.label}
                   </Box>
                   {info.text ? (
                     <Typography sx={{ whiteSpace: 'pre-line', color: 'text.secondary', fontSize: '0.95rem', m: 0 }}>{info.text}</Typography>
                   ) : (
                     <Typography sx={{ m: 0 }}>
-                      <Box component="a" href={info.link} sx={{ color: '#1a7cc7', fontWeight: 600 }}>{info.linkText}</Box>
+                       <Box component="a" href={info.link} sx={{ color: 'secondary.main', fontWeight: 600 }}>{info.linkText}</Box>
                     </Typography>
                   )}
                 </Box>

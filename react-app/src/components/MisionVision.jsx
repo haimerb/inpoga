@@ -26,7 +26,7 @@ export default function MisionVision() {
             sx={{
               display: 'inline-block', fontFamily: '"IBM Plex Mono", monospace',
               fontSize: '0.72rem', fontWeight: 500, letterSpacing: '0.1em',
-              textTransform: 'uppercase', color: '#ffd200',
+              textTransform: 'uppercase', color: 'gold.main',
               border: '1px solid rgba(255,210,0,0.4)', borderRadius: '999px',
               py: 0.4, px: 1.4, mb: 1.5,
             }}
@@ -54,7 +54,7 @@ export default function MisionVision() {
                 <Box
                   sx={{
                     bgcolor: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)',
-                    borderTop: '2px solid #ffd200', borderRadius: '1.25rem', p: { xs: 2, md: 3.2 },
+                    borderTop: '2px solid gold.main', borderRadius: '1.25rem', p: { xs: 2, md: 3.2 },
                     backdropFilter: 'blur(4px)',
                     transition: 'transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.35s cubic-bezier(0.25,0.46,0.45,0.94)',
                     '&:hover': { transform: 'translateY(-3px)', boxShadow: '0 16px 40px rgba(0,0,0,0.2)' },
@@ -64,7 +64,7 @@ export default function MisionVision() {
                     sx={{
                       display: 'inline-block', fontFamily: '"IBM Plex Mono", monospace',
                       fontSize: '0.72rem', letterSpacing: '0.1em', textTransform: 'uppercase',
-                      color: '#ffd200', border: '1px solid #ffd200', borderRadius: '999px',
+                      color: 'gold.main', border: '1px solid gold.main', borderRadius: '999px',
                       py: 0.45, px: 1.2,
                     }}
                   >
@@ -83,12 +83,12 @@ export default function MisionVision() {
         </Grid>
 
         <RevealOnScroll>
-          <Box sx={{ mt: 4, pt: 3, borderTop: '1px solid rgba(26,26,26,0.08)' }}>
-            <Box className="section-tag-bottom" sx={{ mb: 2.5, color: '#ffd200', borderColor: '#ffd200' }}>
+          <Box sx={{ mt: 4, pt: 3, borderTop: '1px solid rgba(255,255,255,0.12)' }}>
+            <Box className="section-tag-bottom" sx={{ mb: 2.5, color: 'gold.main', borderColor: 'gold.main' }}>
               Valores corporativos
             </Box>
             <Grid container spacing={2}>
-              {valores.map((v, i) => (
+              {valores.map((v) => (
                 <Grid item xs={12} md={4} key={v.title}>
                   <Box
                     sx={{

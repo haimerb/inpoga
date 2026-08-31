@@ -1,6 +1,5 @@
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import Grid from '@mui/material/Grid'
 import RevealOnScroll from './RevealOnScroll'
 
 const ejes = [
@@ -26,7 +25,7 @@ export default function Ejes() {
             sx={{
               display: 'inline-block', fontFamily: '"IBM Plex Mono", monospace',
               fontSize: '0.72rem', fontWeight: 500, letterSpacing: '0.1em',
-              textTransform: 'uppercase', color: '#0c4f82',
+              textTransform: 'uppercase', color: 'primary.main',
               border: '1px solid rgba(255,210,0,0.4)', borderRadius: '999px',
               py: 0.45, px: 1.4, mb: 1.5,
             }}
@@ -40,7 +39,7 @@ export default function Ejes() {
         </RevealOnScroll>
 
         <RevealOnScroll stagger>
-          <Box component="ol" sx={{ listStyle: 'none', m: 0, p: 0, display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, columnGap: 4.4, rowGap: 0, borderTop: '1px solid rgba(26,26,26,0.08)' }}>
+          <Box component="ol" sx={{ listStyle: 'none', m: 0, p: 0, display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, columnGap: 4, rowGap: 0, borderTop: '1px solid rgba(26,26,26,0.08)' }}>
             {ejes.map((e) => (
               <Box
                 component="li"
@@ -52,7 +51,7 @@ export default function Ejes() {
                   '&:hover': { transform: 'translateX(6px)', bgcolor: '#fff', boxShadow: '0 6px 20px rgba(12,79,130,0.06)' },
                 }}
               >
-                <Typography sx={{ fontFamily: '"Fraunces", serif', fontStyle: 'italic', color: '#b55a3a', fontSize: '1rem' }}>
+                <Typography sx={{ fontFamily: '"Fraunces", serif', fontStyle: 'italic', color: 'terracotta.main', fontSize: '1rem' }}>
                   {e.num}
                 </Typography>
                 <Typography component="strong" sx={{ fontWeight: 600, color: 'text.primary' }}>
@@ -61,7 +60,7 @@ export default function Ejes() {
                 {e.sub && (
                   <Typography
                     component="small"
-                    sx={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: '0.62rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: '#ffd200' }}
+                    sx={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: '0.62rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'gold.main' }}
                   >
                     {e.sub}
                   </Typography>

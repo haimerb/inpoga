@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 
 export default function ScrollToTop() {

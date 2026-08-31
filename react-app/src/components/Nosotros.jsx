@@ -22,7 +22,7 @@ export default function Nosotros() {
           </Box>
         </RevealOnScroll>
 
-        <Grid container columnSpacing={4.4} rowSpacing={3.5} alignItems="stretch">
+        <Grid container columnSpacing={4} rowSpacing={3.5} alignItems="stretch">
           <Grid item xs={12} md={6} lg={5.5}>
             <RevealOnScroll>
               <Typography sx={{ fontSize: '1.3rem', color: 'text.primary', fontWeight: 500, lineHeight: 1.42, mt: 0 }}>
@@ -49,12 +49,12 @@ export default function Nosotros() {
                     key={f.label}
                     sx={{
                       position: 'relative', bgcolor: '#fff', border: '1px solid rgba(26,26,26,0.08)',
-                      borderLeft: '3px solid #ffd200', borderRadius: '1.25rem', p: { xs: 1.4, sm: 1.8 },
+                      borderLeft: '3px solid gold.main', borderRadius: '1.25rem', p: { xs: 1.4, sm: 1.8 },
                       transition: 'transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease',
-                      '&:hover': { transform: 'translateY(-3px)', boxShadow: '0 6px 20px rgba(12,79,130,0.06)', borderLeftColor: '#b55a3a' },
+                      '&:hover': { transform: 'translateY(-3px)', boxShadow: '0 6px 20px rgba(12,79,130,0.06)', borderLeftColor: 'terracotta.main' },
                     }}
                   >
-                    <Typography sx={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#ffd200', mb: 0.5 }}>
+                    <Typography sx={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'gold.main', mb: 0.5 }}>
                       {f.label}
                     </Typography>
                     <Typography component="strong" sx={{ display: 'block', fontFamily: '"Fraunces", serif', fontSize: '1.3rem', color: 'primary.main' }}>

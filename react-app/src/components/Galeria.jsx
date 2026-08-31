@@ -26,14 +26,14 @@ export default function Galeria() {
   }
 
   return (
-    <Box id="galeria" component="section" sx={{ pb: 0, overflow: 'hidden' }}>
+    <Box id="galeria" component="section" sx={{ pt: { xs: 3.5, md: 6 }, pb: 0, overflow: 'hidden' }}>
       <Box sx={{ maxWidth: 1140, mx: 'auto', px: { xs: 2, sm: 3 } }}>
         <RevealOnScroll sx={{ textAlign: 'center', mx: 'auto', maxWidth: 680, mb: 4 }}>
           <Box
             sx={{
               display: 'inline-block', fontFamily: '"IBM Plex Mono", monospace',
               fontSize: '0.72rem', fontWeight: 500, letterSpacing: '0.1em',
-              textTransform: 'uppercase', color: '#0c4f82',
+              textTransform: 'uppercase', color: 'primary.main',
               border: '1px solid rgba(255,210,0,0.4)', borderRadius: '999px',
               py: 0.45, px: 1.4, mb: 1.5,
             }}

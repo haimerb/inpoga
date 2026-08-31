@@ -41,7 +41,7 @@ const expCards3 = [
 ]
 
 const cardSx = {
-  bgcolor: '#fff', border: '1px solid rgba(26,26,26,0.08)', borderRadius: '1.25rem', p: { xs: 1.3, sm: 2 },
+  bgcolor: '#fff', border: '1px solid rgba(26,26,26,0.08)', borderRadius: '1.25rem', p: { xs: 1.6, sm: 2.2 },
   transition: 'transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.3s cubic-bezier(0.25,0.46,0.45,0.94)',
   '&:hover': { transform: 'translateY(-3px)', boxShadow: '0 6px 20px rgba(12,79,130,0.06)' },
 }
@@ -64,7 +64,7 @@ function ProyectoBlock({ tag, title, desc, children }) {
   return (
     <RevealOnScroll sx={{ mb: 5, pb: 4, borderBottom: '1px solid rgba(26,26,26,0.08)', '&:last-of-type': { mb: 0, pb: 0, borderBottom: 'none' } }}>
       <Box sx={{ mb: 2.5 }}>
-        <Box sx={{ display: 'inline-block', fontFamily: '"IBM Plex Mono", monospace', fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: '#b55a3a', bgcolor: 'rgba(181,90,58,0.08)', py: 0.3, px: 0.9, borderRadius: '999px', mb: 0.8 }}>
+        <Box sx={{ display: 'inline-block', fontFamily: '"IBM Plex Mono", monospace', fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'terracotta.main', bgcolor: 'rgba(181,90,58,0.08)', py: 0.3, px: 0.9, borderRadius: '999px', mb: 0.8 }}>
           {tag}
         </Box>
         <Typography variant="h3" sx={{ mb: 0.8, color: 'primary.main', fontSize: { xs: '1.25rem', sm: '1.6rem' } }}>{title}</Typography>
@@ -121,7 +121,7 @@ export default function Proyectos() {
                 <RevealOnScroll>
                   <Box sx={{
                     position: 'relative', bgcolor: '#fff', border: '1px solid rgba(26,26,26,0.08)',
-                    borderRadius: '1.25rem', p: { sm: 2.4, xs: 1.6 },
+                    borderRadius: '1.25rem', p: { xs: 1.6, sm: 2.4 },
                     transition: 'transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.3s cubic-bezier(0.25,0.46,0.45,0.94)',
                     '&:hover': { transform: 'translateY(-4px)', boxShadow: '0 16px 40px rgba(12,79,130,0.1)' },
                     '&::after': { content: '""', position: 'absolute', bottom: 0, left: 1.6, right: 1.6, height: 2, background: 'linear-gradient(90deg, #ffd200, #1a7cc7)', borderRadius: 2, opacity: 0, transition: 'opacity 0.3s ease' },

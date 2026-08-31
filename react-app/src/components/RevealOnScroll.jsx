@@ -13,7 +13,6 @@ export default function RevealOnScroll({ children, stagger = false, sx = {}, ...
       return
     }
 
-    const cls = stagger ? 'is-visible' : 'is-visible'
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {

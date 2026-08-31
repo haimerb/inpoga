@@ -18,6 +18,27 @@ const footerLinkCol = [
   ]},
 ]
 
+const h3Sx = {
+  mb: 1.2,
+  fontSize: '0.85rem',
+  fontFamily: '"IBM Plex Mono", monospace',
+  textTransform: 'uppercase',
+  letterSpacing: '0.1em',
+  color: 'gold.main',
+  position: 'relative',
+  pb: 0.8,
+  '&::after': {
+    content: '""',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    width: '1.5rem',
+    height: 2,
+    bgcolor: 'gold.main',
+    opacity: 0.5,
+  },
+}
+
 export default function Footer() {
   useEffect(() => {
     const container = document.getElementById('siteseal')
@@ -31,11 +52,11 @@ export default function Footer() {
   }, [])
 
   return (
-    <Box component="footer" sx={{ bgcolor: 'primary.main', color: 'rgba(255,255,255,0.82)', pt: 5, position: 'relative' }}>
+    <Box component="footer" sx={{ bgcolor: 'primary.main', color: 'rgba(255,255,255,0.82)', pt: 5, pb: 3, position: 'relative' }}>
       <Box sx={{ maxWidth: 1140, mx: 'auto', px: { xs: 2, sm: 3 } }}>
         <Grid container columnSpacing={3} rowSpacing={3} sx={{ pb: 4 }}>
           {/* Brand */}
-          <Grid item xs={12} md={4} lg={4.2}>
+          <Grid item xs={12} md={3}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1.5 }}>
               <Box component="img" src="/assets/logo-gaviotas.png" alt="Logo de Integración Popular Gaviotas Corporación" sx={{ width: 48, height: 48, objectFit: 'contain' }} />
               <Box sx={{ display: 'flex', flexDirection: 'column', lineHeight: 1.15 }}>
@@ -55,21 +76,13 @@ export default function Footer() {
           {/* Link columns */}
           {footerLinkCol.map((col) => (
             <Grid item xs={6} sm={4} md={3} key={col.title}>
-              <Typography
-                component="h3"
-                sx={{
-                  mb: 1.2, fontSize: '0.85rem', fontFamily: '"IBM Plex Mono", monospace',
-                  textTransform: 'uppercase', letterSpacing: '0.1em', color: '#ffd200',
-                  position: 'relative', pb: 0.8,
-                  '&::after': { content: '""', position: 'absolute', bottom: 0, left: 0, width: '1.5rem', height: 2, bgcolor: '#ffd200', opacity: 0.5 },
-                }}
-              >
+              <Typography component="h3" sx={h3Sx}>
                 {col.title}
               </Typography>
               <Box component="ul" sx={{ listStyle: 'none', m: 0, p: 0 }}>
                 {col.links.map((link) => (
                   <Box component="li" key={link.label} sx={{ mb: 0.7, color: 'rgba(255,255,255,0.66)', fontSize: '0.94rem' }}>
-                    <Link href={link.href} underline="none" sx={{ color: 'inherit', '&:hover': { color: '#ffd200' } }}>
+                    <Link href={link.href} underline="none" sx={{ color: 'inherit', '&:hover': { color: 'gold.main' } }}>
                       {link.label}
                     </Link>
                   </Box>
@@ -79,16 +92,8 @@ export default function Footer() {
           ))}
 
           {/* Contact */}
-          <Grid item xs={6} sm={4} md={3}>
-            <Typography
-              component="h3"
-              sx={{
-                mb: 1.2, fontSize: '0.85rem', fontFamily: '"IBM Plex Mono", monospace',
-                textTransform: 'uppercase', letterSpacing: '0.1em', color: '#ffd200',
-                position: 'relative', pb: 0.8,
-                '&::after': { content: '""', position: 'absolute', bottom: 0, left: 0, width: '1.5rem', height: 2, bgcolor: '#ffd200', opacity: 0.5 },
-              }}
-            >
+          <Grid item xs={12} sm={4} md={3}>
+            <Typography component="h3" sx={h3Sx}>
               Contacto
             </Typography>
             <Box component="ul" sx={{ listStyle: 'none', m: 0, p: 0 }}>
@@ -100,7 +105,7 @@ export default function Footer() {
               ].map((item, i) => (
                 <Box component="li" key={i} sx={{ mb: 0.7, color: 'rgba(255,255,255,0.78)', fontSize: '0.94rem' }}>
                   {item.isLink ? (
-                    <Link href={item.href} underline="none" sx={{ color: 'inherit', '&:hover': { color: '#ffd200' } }}>
+                    <Link href={item.href} underline="none" sx={{ color: 'inherit', '&:hover': { color: 'gold.main' } }}>
                       {item.label}
                     </Link>
                   ) : item.text}
@@ -124,7 +129,7 @@ export default function Footer() {
                     width: 40, height: 40, borderRadius: '50%', bgcolor: 'rgba(255,255,255,0.1)',
                     color: 'rgba(255,255,255,0.75)',
                     transition: 'background 0.25s ease, color 0.25s ease, transform 0.25s ease',
-                    '&:hover': { bgcolor: '#ffd200', color: 'primary.main', transform: 'translateY(-2px)' },
+                    '&:hover': { bgcolor: 'gold.main', color: 'primary.main', transform: 'translateY(-2px)' },
                     '&:active': { transform: 'scale(0.95)' },
                   }}
                 >
