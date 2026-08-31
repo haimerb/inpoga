@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Blue triangle -->
+  <polygon points="32,6 58,56 6,56" fill="#1572b5"/>
+  <!-- Gold triangle -->
+  <polygon points="32,26 46,56 18,56" fill="#ffd200"/>
+  <!-- Guitar silhouette -->
+  <path d="M32,16 C32,16 28,22 28,30 C28,35 30,38 32,38 C34,38 36,35 36,30 C36,22 32,16 32,16Z" fill="#fff" opacity="0.9"/>
+  <rect x="31" y="10" width="2" height="8" rx="1" fill="#fff" opacity="0.9"/>
+  <!-- Sound hole -->
+  <circle cx="32" cy="30" r="2" fill="#1572b5" opacity="0.6"/>
+  <!-- Doves -->
+  <path d="M14,48 C16,44 20,44 22,46 C20,47 18,49 16,50 C15,50.5 14,49 14,48Z" fill="#fff"/>
+  <path d="M50,48 C48,44 44,44 42,46 C44,47 46,49 48,50 C49,50.5 50,49 50,48Z" fill="#fff"/>
+</svg>
