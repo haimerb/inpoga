@@ -42,6 +42,17 @@ jobs:
           cp public/robots.txt dist/ 2>/dev/null || true
           cp public/sitemap.xml dist/ 2>/dev/null || true
 
+      - name: Debug secrets
+        run: |
+          echo "FTP_SERVER length: ${#FTP_SERVER}"
+          echo "FTP_USERNAME length: ${#FTP_USERNAME}"
+          echo "FTP_PASSWORD length: ${#FTP_PASSWORD}"
+          echo "FTP_SERVER first char: ${FTP_SERVER:0:1}"
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
