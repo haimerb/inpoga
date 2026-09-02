@@ -5,13 +5,6 @@ on:
     branches: [main]
   workflow_dispatch:
 
-env:
-  FTP_SERVER: ${{ secrets.FTP_SERVER }}
-  FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-  FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-  REMOTE_DIR: /public_html
-  BUILD_DIR: react-app/dist
-
 jobs:
   build-and-deploy:
     name: Build & Deploy
@@ -52,11 +45,11 @@ jobs:
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
-          server: ${{ env.FTP_SERVER }}
-          username: ${{ env.FTP_USERNAME }}
-          password: ${{ env.FTP_PASSWORD }}
-          local-dir: ${{ env.BUILD_DIR }}/
-          server-dir: ${{ env.REMOTE_DIR }}/
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: react-app/dist/
+          server-dir: /public_html/
           protocol: ftp
           port: 21
           exclude: |
