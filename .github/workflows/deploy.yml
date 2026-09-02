@@ -42,16 +42,12 @@ jobs:
           cp public/robots.txt dist/ 2>/dev/null || true
           cp public/sitemap.xml dist/ 2>/dev/null || true
 
-      - name: Debug secrets
+      - name: Test FTP connection
         run: |
-          echo "FTP_SERVER length: ${#FTP_SERVER}"
-          echo "FTP_USERNAME length: ${#FTP_USERNAME}"
-          echo "FTP_PASSWORD length: ${#FTP_PASSWORD}"
-          echo "FTP_SERVER first char: ${FTP_SERVER:0:1}"
-        env:
-          FTP_SERVER: ${{ secrets.FTP_SERVER }}
-          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          echo "Testing FTP connection to ${{ secrets.FTP_SERVER }}..."
+          nc -zv -w 10 ${{ secrets.FTP_SERVER }} 21 || echo "FTP port 21 unreachable"
+          echo "Testing DNS resolution..."
+          nslookup ${{ secrets.FTP_SERVER }} || echo "DNS lookup failed"
 
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
@@ -63,6 +59,7 @@ jobs:
           server-dir: /public_html/
           protocol: ftp
           port: 21
+          timeout: 30000
           exclude: |
             *.tar.gz
             *.zip
