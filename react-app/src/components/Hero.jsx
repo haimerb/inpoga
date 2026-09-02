@@ -6,7 +6,7 @@ import RevealOnScroll from './RevealOnScroll'
 
 const stats = [
   { dt: '35+', strong: 'Años', span: 'de trayectoria en Cali' },
-  { dt: 'ESAL', strong: 'Tipo legal', span: 'utilidad comunal sin fines de lucro' },
+  { dt: 'ESAL', strong: 'Tipo legal', span: 'Entidad sin ánimo de lucro' },
   { dt: '3', strong: 'Valores', span: 'veracidad, bondad, respeto' },
 ]
 
