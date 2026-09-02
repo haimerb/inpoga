@@ -6,8 +6,11 @@ const theme = createTheme({
     secondary: { main: '#1a7cc7', contrastText: '#fff' },
     gold: { main: '#ffd200', dark: '#e6b800' },
     terracotta: { main: '#b55a3a' },
+    success: { main: '#2e7d32', light: '#e8f5e9', border: '#a5d6a7' },
+    error: { main: '#c62828', light: '#fbe9e7', border: '#ef9a9a' },
+    whatsapp: { main: '#25d366' },
     background: { default: '#faf9f6', paper: '#ffffff' },
-    text: { primary: '#1a1a1a', secondary: '#5a5550' },
+    text: { primary: '#1a1a1a', secondary: '#4a4540' },
   },
   typography: {
     fontFamily: '"Work Sans", sans-serif',

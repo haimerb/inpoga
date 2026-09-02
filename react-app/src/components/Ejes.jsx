@@ -23,9 +23,9 @@ export default function Ejes() {
         <RevealOnScroll sx={{ textAlign: 'center', mx: 'auto', maxWidth: 680, mb: 4 }}>
           <Box
             sx={{
-              display: 'inline-block', fontFamily: '"IBM Plex Mono", monospace',
-              fontSize: '0.72rem', fontWeight: 500, letterSpacing: '0.1em',
-              textTransform: 'uppercase', color: 'primary.main',
+              display: 'inline-block',
+              variant: 'caption',
+              color: 'primary.main',
               border: '1px solid rgba(255,210,0,0.4)', borderRadius: '999px',
               py: 0.45, px: 1.4, mb: 1.5,
             }}
@@ -51,7 +51,7 @@ export default function Ejes() {
                   '&:hover': { transform: 'translateX(6px)', bgcolor: 'background.paper', boxShadow: '0 6px 20px rgba(12,79,130,0.06)' },
                 }}
               >
-                <Typography sx={{ fontFamily: '"Fraunces", serif', fontStyle: 'italic', color: 'terracotta.main', fontSize: '1rem' }}>
+                <Typography variant="h4" sx={{ fontStyle: 'italic', color: 'terracotta.main', fontSize: '1rem' }}>
                   {e.num}
                 </Typography>
                 <Typography component="strong" sx={{ fontWeight: 600, color: 'text.primary' }}>
@@ -60,7 +60,8 @@ export default function Ejes() {
                 {e.sub && (
                   <Typography
                     component="small"
-                    sx={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: '0.62rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'gold.main' }}
+                    variant="caption"
+                    sx={{ fontSize: '0.62rem', color: 'gold.main' }}
                   >
                     {e.sub}
                   </Typography>

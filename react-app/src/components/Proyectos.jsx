@@ -57,7 +57,7 @@ function ExpCard({ year, title, desc }) {
   return (
     <Grid item xs={12} sm={6} md={4}>
       <Box sx={cardSx}>
-        <Box sx={{ display: 'inline-block', fontFamily: '"IBM Plex Mono", monospace', fontSize: '0.75rem', color: 'gold.main', bgcolor: 'rgba(255,210,0,0.1)', py: 0.3, px: 0.9, borderRadius: '999px', mb: 0.8 }}>
+        <Box sx={{ display: 'inline-block', variant: 'caption', color: 'gold.main', bgcolor: 'rgba(255,210,0,0.1)', py: 0.3, px: 0.9, borderRadius: '999px', mb: 0.8 }}>
           {year}
         </Box>
         <Typography variant="h6" sx={{ fontSize: '1.05rem', mb: 0.6, color: 'primary.main' }}>{title}</Typography>
@@ -71,7 +71,7 @@ function ProyectoBlock({ tag, title, desc, children }) {
   return (
     <RevealOnScroll sx={{ mb: 5, pb: 4, borderBottom: '1px solid rgba(26,26,26,0.08)', '&:last-of-type': { mb: 0, pb: 0, borderBottom: 'none' } }}>
       <Box sx={{ mb: 2.5 }}>
-        <Box sx={{ display: 'inline-block', fontFamily: '"IBM Plex Mono", monospace', fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'terracotta.main', bgcolor: 'rgba(181,90,58,0.08)', py: 0.3, px: 0.9, borderRadius: '999px', mb: 0.8 }}>
+        <Box sx={{ display: 'inline-block', variant: 'caption', color: 'terracotta.main', bgcolor: 'rgba(181,90,58,0.08)', py: 0.3, px: 0.9, borderRadius: '999px', mb: 0.8 }}>
           {tag}
         </Box>
         <Typography variant="h3" sx={{ mb: 0.8, color: 'primary.main', fontSize: { xs: '1.25rem', sm: '1.6rem' } }}>{title}</Typography>
@@ -173,7 +173,7 @@ export default function Proyectos() {
           <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, gap: 1.5, mb: 4 }}>
             {saberesFases.map((f, i) => (
               <Box key={f.title} sx={{ display: 'flex', gap: 1.2, alignItems: 'flex-start', p: 1.5, bgcolor: 'rgba(12,79,130,0.03)', borderRadius: '0.75rem' }}>
-                <Box sx={{ fontFamily: '"Fraunces", serif', fontStyle: 'italic', color: 'terracotta.main', fontSize: '1.1rem', fontWeight: 600, minWidth: '1.6rem' }}>
+                <Box sx={{ variant: 'h4', fontStyle: 'italic', color: 'terracotta.main', fontSize: '1.1rem', fontWeight: 600, minWidth: '1.6rem' }}>
                   {String(i + 1).padStart(2, '0')}
                 </Box>
                 <Box>

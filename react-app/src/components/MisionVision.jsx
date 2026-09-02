@@ -24,9 +24,9 @@ export default function MisionVision() {
         <RevealOnScroll sx={{ textAlign: 'center', mx: 'auto', maxWidth: 680, mb: 4 }}>
           <Box
             sx={{
-              display: 'inline-block', fontFamily: '"IBM Plex Mono", monospace',
-              fontSize: '0.72rem', fontWeight: 500, letterSpacing: '0.1em',
-              textTransform: 'uppercase', color: 'gold.main',
+              display: 'inline-block',
+              variant: 'caption',
+              color: 'gold.main',
               border: '1px solid rgba(255,210,0,0.4)', borderRadius: '999px',
               py: 0.4, px: 1.4, mb: 1.5,
             }}
@@ -62,15 +62,15 @@ export default function MisionVision() {
                 >
                   <Box
                     sx={{
-                      display: 'inline-block', fontFamily: '"IBM Plex Mono", monospace',
-                      fontSize: '0.72rem', letterSpacing: '0.1em', textTransform: 'uppercase',
+                      display: 'inline-block',
+                      variant: 'caption',
                       color: 'gold.main', border: '1px solid gold.main', borderRadius: '999px',
                       py: 0.45, px: 1.2,
                     }}
                   >
                     {card.label}
                   </Box>
-                  <Typography variant="h3" sx={{ mt: 1.8, mb: 1.2, color: '#fff', fontFamily: '"Fraunces", serif', fontSize: { xs: '1.4rem', sm: 'clamp(1.5rem,2.2vw,2rem)' }, fontWeight: 580 }}>
+                  <Typography variant="h3" sx={{ mt: 1.8, mb: 1.2, color: '#fff', fontSize: { xs: '1.4rem', sm: 'clamp(1.5rem,2.2vw,2rem)' }, fontWeight: 580 }}>
                     {card.title}
                   </Typography>
                   <Typography sx={{ color: 'rgba(255,255,255,0.82)', mt: 0 }}>
@@ -92,12 +92,12 @@ export default function MisionVision() {
                 <Grid item xs={12} md={4} key={v.title}>
                   <Box
                     sx={{
-                      textAlign: 'center', p: 3.2, bgcolor: '#fff', border: '1px solid rgba(26,26,26,0.08)',
+                      textAlign: 'center', p: 3.2, bgcolor: 'background.paper', border: '1px solid rgba(26,26,26,0.08)',
                       borderRadius: '1.25rem', transition: 'transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.35s cubic-bezier(0.25,0.46,0.45,0.94)',
                       '&:hover': { transform: 'translateY(-3px)', boxShadow: '0 6px 20px rgba(12,79,130,0.06)' },
                     }}
                   >
-                    <Typography variant="h3" sx={{ mb: 0.8, fontFamily: '"Fraunces", serif', fontSize: '1.3rem', color: 'primary.main' }}>
+                    <Typography variant="h3" sx={{ mb: 0.8, fontSize: '1.3rem', color: 'primary.main' }}>
                       {v.title}
                     </Typography>
                     <Typography sx={{ color: 'text.secondary', fontSize: '0.92rem' }}>

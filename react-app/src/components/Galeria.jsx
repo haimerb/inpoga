@@ -41,9 +41,9 @@ export default function Galeria() {
         <RevealOnScroll sx={{ textAlign: 'center', mx: 'auto', maxWidth: 680, mb: 4 }}>
           <Box
             sx={{
-              display: 'inline-block', fontFamily: '"IBM Plex Mono", monospace',
-              fontSize: '0.72rem', fontWeight: 500, letterSpacing: '0.1em',
-              textTransform: 'uppercase', color: 'primary.main',
+              display: 'inline-block',
+              variant: 'caption',
+              color: 'primary.main',
               border: '1px solid rgba(255,210,0,0.4)', borderRadius: '999px',
               py: 0.45, px: 1.4, mb: 1.5,
             }}
@@ -65,6 +65,15 @@ export default function Galeria() {
                 key={i}
                 className={`gallery-item${item.isVideo ? ' video-item' : ''}`}
                 onClick={item.isVideo ? () => handleVideoClick(item) : undefined}
+                role={item.isVideo ? 'button' : undefined}
+                tabIndex={item.isVideo ? 0 : undefined}
+                aria-label={item.isVideo ? `Ver video: ${item.alt}` : undefined}
+                onKeyDown={item.isVideo ? (e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    handleVideoClick(item)
+                  }
+                } : undefined}
                 sx={{
                   flex: '0 0 auto', width: { xs: 220, sm: 260, md: 340 }, aspectRatio: '4/3',
                   borderRadius: '1.25rem', overflow: 'hidden', position: 'relative', m: 0,
@@ -101,8 +110,7 @@ export default function Galeria() {
                 {item.tag && (
                   <Box sx={{
                     position: 'absolute', top: 10, left: 10,
-                    fontFamily: '"IBM Plex Mono", monospace', fontSize: '0.65rem', fontWeight: 600,
-                    letterSpacing: '0.04em', textTransform: 'uppercase',
+                    variant: 'caption', fontSize: '0.65rem', fontWeight: 600,
                     color: '#fff', bgcolor: 'rgba(12,79,130,0.85)',
                     px: 0.8, py: 0.3, borderRadius: '999px', backdropFilter: 'blur(4px)',
                   }}>

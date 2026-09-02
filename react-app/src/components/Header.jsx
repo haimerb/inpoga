@@ -59,16 +59,16 @@ export default function Header() {
             />
             <Box sx={{ display: 'flex', flexDirection: 'column', lineHeight: 1.15 }}>
               <Typography
-                variant="body2"
+                variant="subtitle1"
                 component="strong"
-                sx={{ fontFamily: '"Fraunces", serif', fontSize: '1.02rem', color: 'text.primary', fontWeight: 700 }}
+                sx={{ fontSize: '1.02rem', color: 'text.primary', fontWeight: 700 }}
               >
                 Int. Popular Gaviotas
               </Typography>
               <Typography
-                variant="body2"
+                variant="caption"
                 component="small"
-                sx={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: '0.66rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'text.secondary' }}
+                sx={{ fontSize: '0.66rem', color: 'text.secondary' }}
               >
                 Corporación · Desde 1990
               </Typography>
@@ -76,7 +76,7 @@ export default function Header() {
           </Box>
 
           {!isMobile && (
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2.4, ml: 'auto' }}>
+            <Box component="nav" aria-label="Navegación principal" sx={{ display: 'flex', alignItems: 'center', gap: 2.4, ml: 'auto' }}>
               {navLinks.map((link) => (
                 <Box
                   key={link.href}
@@ -131,7 +131,7 @@ export default function Header() {
         </Toolbar>
       </AppBar>
 
-      <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+      <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)} aria-label="Menú de navegación">
         <Box sx={{ width: 260, pt: 2 }}>
           <List>
             {navLinks.map((link) => (

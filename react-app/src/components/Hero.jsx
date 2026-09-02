@@ -71,7 +71,7 @@ export default function Hero() {
             {stats.map((s) => (
               <Grid key={s.dt} item xs={4}>
                 <Box sx={{ textAlign: 'center' }}>
-                  <Typography sx={{ fontFamily: '"Fraunces", serif', fontStyle: 'italic', fontSize: { xs: '1.5rem', sm: '1.9rem' }, lineHeight: 1, color: 'terracotta.main', fontWeight: 600 }}>
+                  <Typography variant="h3" sx={{ fontStyle: 'italic', fontSize: { xs: '1.5rem', sm: '1.9rem' }, lineHeight: 1, color: 'terracotta.main', fontWeight: 600 }}>
                     {s.dt}
                   </Typography>
                   <Typography component="strong" sx={{ display: 'block', fontSize: '0.95rem', color: 'primary.main', fontWeight: 700, mt: 0.5 }}>

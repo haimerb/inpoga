@@ -12,7 +12,7 @@ export default function WhatsAppFloat() {
       sx={{
         position: 'fixed', bottom: '1.5rem', right: '1.5rem', zIndex: 50,
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        width: 56, height: 56, borderRadius: '50%', bgcolor: '#25d366',
+        width: 56, height: 56, borderRadius: '50%', bgcolor: 'whatsapp.main',
         boxShadow: '0 4px 18px rgba(37,211,102,0.4)',
         transition: 'transform 0.25s ease, box-shadow 0.25s ease',
         '&:hover': { transform: 'scale(1.1)', boxShadow: '0 6px 24px rgba(37,211,102,0.55)' },

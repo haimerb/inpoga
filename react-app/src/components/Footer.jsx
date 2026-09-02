@@ -21,9 +21,7 @@ const footerLinkCol = [
 const h3Sx = {
   mb: 1.2,
   fontSize: '0.85rem',
-  fontFamily: '"IBM Plex Mono", monospace',
-  textTransform: 'uppercase',
-  letterSpacing: '0.1em',
+  variant: 'caption',
   color: 'gold.main',
   position: 'relative',
   pb: 0.8,
@@ -49,6 +47,10 @@ export default function Footer() {
       script.src = 'https://seal.godaddy.com/getSealBasic?sealID=rif1HHNz2qQafGm8wcolj46BEIHT96yrjoyyYCG3gf7hRcAAL3ojzK3vXHKl'
       container.appendChild(script)
     }
+    return () => {
+      const el = document.getElementById('siteseal')
+      if (el) el.innerHTML = ''
+    }
   }, [])
 
   return (
@@ -58,12 +60,12 @@ export default function Footer() {
           {/* Brand */}
           <Grid item xs={12} md={3}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1.5 }}>
-              <Box component="img" src="/assets/logo-gaviotas.png" alt="Logo de Integración Popular Gaviotas Corporación" sx={{ width: 48, height: 48, objectFit: 'contain' }} />
+              <Box component="img" src="/assets/logo-gaviotas.png" alt="Logo de Integración Popular Gaviotas Corporación" loading="lazy" sx={{ width: 48, height: 48, objectFit: 'contain' }} />
               <Box sx={{ display: 'flex', flexDirection: 'column', lineHeight: 1.15 }}>
-                <Typography component="strong" sx={{ fontFamily: '"Fraunces", serif', fontSize: '1.02rem', color: '#fff', fontWeight: 700 }}>
+                <Typography component="strong" variant="subtitle1" sx={{ fontSize: '1.02rem', color: '#fff', fontWeight: 700 }}>
                   Int. Popular Gaviotas
                 </Typography>
-                <Typography component="small" sx={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: '0.66rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.55)' }}>
+                <Typography component="small" variant="caption" sx={{ fontSize: '0.66rem', color: 'rgba(255,255,255,0.55)' }}>
                   Corporación · Desde 1990
                 </Typography>
               </Box>
@@ -79,14 +81,16 @@ export default function Footer() {
               <Typography component="h3" sx={h3Sx}>
                 {col.title}
               </Typography>
-              <Box component="ul" sx={{ listStyle: 'none', m: 0, p: 0 }}>
-                {col.links.map((link) => (
-                  <Box component="li" key={link.label} sx={{ mb: 0.7, color: 'rgba(255,255,255,0.66)', fontSize: '0.94rem' }}>
-                    <Link href={link.href} underline="none" sx={{ color: 'inherit', '&:hover': { color: 'gold.main' } }}>
-                      {link.label}
-                    </Link>
-                  </Box>
-                ))}
+              <Box component="nav" aria-label={col.title}>
+                <Box component="ul" sx={{ listStyle: 'none', m: 0, p: 0 }}>
+                  {col.links.map((link) => (
+                    <Box component="li" key={link.label} sx={{ mb: 0.7, color: 'rgba(255,255,255,0.66)', fontSize: '0.94rem' }}>
+                      <Link href={link.href} underline="none" sx={{ color: 'inherit', '&:hover': { color: 'gold.main' } }}>
+                        {link.label}
+                      </Link>
+                    </Box>
+                  ))}
+                </Box>
               </Box>
             </Grid>
           ))}
@@ -96,7 +100,8 @@ export default function Footer() {
             <Typography component="h3" sx={h3Sx}>
               Contacto
             </Typography>
-            <Box component="ul" sx={{ listStyle: 'none', m: 0, p: 0 }}>
+            <Box component="nav" aria-label="Información de contacto">
+              <Box component="ul" sx={{ listStyle: 'none', m: 0, p: 0 }}>
               {[
                 { text: 'Carrera 25 # 42 a 28' },
                 { text: 'Cali · Valle del Cauca' },
@@ -111,6 +116,7 @@ export default function Footer() {
                   ) : item.text}
                 </Box>
               ))}
+              </Box>
             </Box>
             <Box sx={{ display: 'flex', gap: 1, mt: 1.5 }}>
               {[
@@ -144,7 +150,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <Box sx={{ borderTop: '1px solid rgba(255,255,255,0.12)', py: 1.5, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0.8 }}>
-          <Typography sx={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: '0.72rem', letterSpacing: '0.04em', color: 'rgba(255,255,255,0.45)', m: 0 }}>
+          <Typography variant="caption" sx={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.45)', m: 0 }}>
             © 2026 Integración Popular Gaviotas Corporación · Cali, Valle del Cauca
           </Typography>
           <Box id="siteseal" sx={{ display: 'inline-flex', alignItems: 'center', opacity: 0.7, '&:hover': { opacity: 1 } }} />

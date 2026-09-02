@@ -48,16 +48,16 @@ export default function Nosotros() {
                   <Box
                     key={f.label}
                     sx={{
-                      position: 'relative', bgcolor: '#fff', border: '1px solid rgba(26,26,26,0.08)',
+                      position: 'relative', bgcolor: 'background.paper', border: '1px solid rgba(26,26,26,0.08)',
                       borderLeft: '3px solid gold.main', borderRadius: '1.25rem', p: { xs: 1.4, sm: 1.8 },
                       transition: 'transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease',
                       '&:hover': { transform: 'translateY(-3px)', boxShadow: '0 6px 20px rgba(12,79,130,0.06)', borderLeftColor: 'terracotta.main' },
                     }}
                   >
-                    <Typography sx={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'gold.main', mb: 0.5 }}>
+                    <Typography variant="caption" sx={{ color: 'gold.main', mb: 0.5 }}>
                       {f.label}
                     </Typography>
-                    <Typography component="strong" sx={{ display: 'block', fontFamily: '"Fraunces", serif', fontSize: '1.3rem', color: 'primary.main' }}>
+                    <Typography component="strong" variant="h4" sx={{ display: 'block', color: 'primary.main' }}>
                       {f.strong}
                     </Typography>
                     <Typography component="small" sx={{ display: 'block', mt: 0.3, color: 'text.secondary', fontSize: '0.9rem' }}>

@@ -65,7 +65,6 @@ export default function Contacto() {
   const fieldSx = {
     '& .MuiOutlinedInput-root': {
       borderRadius: '0.7rem',
-      fontFamily: '"Work Sans", sans-serif',
       fontSize: '0.98rem',
       color: 'text.primary',
       bgcolor: 'background.paper',
@@ -163,7 +162,7 @@ export default function Contacto() {
             </Button>
 
             {submitted && (
-              <Box sx={{ mt: 1.5, p: 1.5, borderRadius: '0.7rem', bgcolor: '#e8f5e9', color: '#2e7d32', border: '1px solid #a5d6a7', fontSize: '0.95rem' }}>
+              <Box sx={{ mt: 1.5, p: 1.5, borderRadius: '0.7rem', bgcolor: 'success.light', color: 'success.main', border: '1px solid', borderColor: 'success.border', fontSize: '0.95rem' }}>
                 <Typography sx={{ m: 0 }}>
                   Mensaje preparado. Se abrió tu cliente de correo con los datos del formulario. Solo tenés que presionar{' '}
                   <Box component="strong">Enviar</Box>.
@@ -171,7 +170,7 @@ export default function Contacto() {
               </Box>
             )}
             {errorGlobal && (
-              <Box sx={{ mt: 1.5, p: 1.5, borderRadius: '0.7rem', bgcolor: '#fbe9e7', color: '#c62828', border: '1px solid #ef9a9a', fontSize: '0.95rem' }}>
+              <Box sx={{ mt: 1.5, p: 1.5, borderRadius: '0.7rem', bgcolor: 'error.light', color: 'error.main', border: '1px solid', borderColor: 'error.border', fontSize: '0.95rem' }}>
                 <Typography sx={{ m: 0 }}>
                   No se pudo abrir el correo. Escribinos directamente a{' '}
                   <Box component="a" href="mailto:contacto@corpogaviotas.org" sx={{ color: 'secondary.main', fontWeight: 600 }}>contacto@corpogaviotas.org</Box>{' '}
@@ -191,7 +190,7 @@ export default function Contacto() {
             ].map((info) => (
               <Grid item xs={12} sm={6} md={4} key={info.label}>
                 <Box sx={{ transition: 'transform 0.3s ease', '&:hover': { transform: 'translateX(4px)' } }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.7, fontFamily: '"IBM Plex Mono", monospace', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'secondary.main', mb: 0.6 }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.7, variant: 'caption', color: 'secondary.main', mb: 0.6 }}>
                     <Box sx={{ width: '0.55rem', height: '0.55rem', borderRadius: '50%', bgcolor: 'gold.main', flex: 'none' }} />
                     {info.label}
                   </Box>
