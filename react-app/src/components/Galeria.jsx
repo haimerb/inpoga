@@ -18,6 +18,16 @@ const galleryItems = [
   },
   { src: '/assets/gallery/gaviotas-31.jpg', alt: 'Trabajo en comunidad de mujeres artesanas en Pance, Cali' },
   { src: '/assets/gallery/gaviotas-19.jpg', alt: 'Capacitación en territorio para mujeres del suroccidente' },
+  { src: '/assets/gallery/transmision-saberes-01.jpg', alt: 'Transmisión de Saberes — taller comunitario', tag: 'Transmisión de Saberes' },
+  { src: '/assets/gallery/transmision-saberes-02.jpg', alt: 'Transmisión de Saberes — formación en territorio', tag: 'Transmisión de Saberes' },
+  { src: '/assets/gallery/transmision-saberes-03.jpg', alt: 'Transmisión de Saberes — compartir conocimiento', tag: 'Transmisión de Saberes' },
+  { src: '/assets/gallery/transmision-saberes-04.jpg', alt: 'Transmisión de Saberes — aprendizaje colaborativo', tag: 'Transmisión de Saberes' },
+  { src: '/assets/gallery/transmision-saberes-05.jpg', alt: 'Transmisión de Saberes — capacitación práctica', tag: 'Transmisión de Saberes' },
+  { src: '/assets/gallery/transmision-saberes-06.jpg', alt: 'Transmisión de Saberes — comunidad participando', tag: 'Transmisión de Saberes' },
+  { src: '/assets/gallery/transmision-saberes-07.jpg', alt: 'Transmisión de Saberes — saberes ancestrales', tag: 'Transmisión de Saberes' },
+  { src: '/assets/gallery/transmision-saberes-08.jpg', alt: 'Transmisión de Saberes — actividades formativas', tag: 'Transmisión de Saberes' },
+  { src: '/assets/gallery/transmision-saberes-09.jpg', alt: 'Transmisión de Saberes — encuentro de saberes', tag: 'Transmisión de Saberes' },
+  { src: '/assets/gallery/transmision-saberes-10.jpg', alt: 'Transmisión de Saberes — integración comunitaria', tag: 'Transmisión de Saberes' },
 ]
 
 export default function Galeria() {
@@ -86,6 +96,17 @@ export default function Galeria() {
                       <circle cx="24" cy="24" r="23" stroke="#fff" strokeWidth="2" opacity="0.85" />
                       <polygon points="19,15 35,24 19,33" fill="#fff" opacity="0.9" />
                     </svg>
+                  </Box>
+                )}
+                {item.tag && (
+                  <Box sx={{
+                    position: 'absolute', top: 10, left: 10,
+                    fontFamily: '"IBM Plex Mono", monospace', fontSize: '0.65rem', fontWeight: 600,
+                    letterSpacing: '0.04em', textTransform: 'uppercase',
+                    color: '#fff', bgcolor: 'rgba(12,79,130,0.85)',
+                    px: 0.8, py: 0.3, borderRadius: '999px', backdropFilter: 'blur(4px)',
+                  }}>
+                    {item.tag}
                   </Box>
                 )}
               </Box>
