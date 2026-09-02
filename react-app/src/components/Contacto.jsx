@@ -69,11 +69,13 @@ export default function Contacto() {
       fontSize: '0.98rem',
       color: 'text.primary',
       bgcolor: 'background.paper',
+      width: '100%',
       '& fieldset': { borderColor: 'rgba(16,35,59,0.18)', borderWidth: 1.5 },
       '&:hover fieldset': { borderColor: 'rgba(16,35,59,0.3)' },
       '&.Mui-focused fieldset': { borderColor: 'secondary.main', borderWidth: 1.5, boxShadow: '0 0 0 3px rgba(10,93,158,0.12)' },
     },
     '& .MuiInputLabel-root': { fontSize: '0.85rem', fontWeight: 600, color: 'primary.main' },
+    '& .MuiSelect-select': { width: '100% !important', minWidth: 0 },
   }
 
   return (
