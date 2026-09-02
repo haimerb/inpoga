@@ -48,7 +48,7 @@ export default function Hero() {
                 borderRadius: '999px', px: 2.8, py: 1.3, fontWeight: 700, fontSize: '0.96rem',
                 bgcolor: 'primary.main', borderBottom: '3px solid gold.main',
                 boxShadow: '0 12px 26px rgba(12,79,130,0.24)',
-                '&:hover': { bgcolor: '#0a4270', boxShadow: '0 18px 34px rgba(12,79,130,0.3)' },
+                '&:hover': { bgcolor: 'primary.dark', boxShadow: '0 18px 34px rgba(12,79,130,0.3)' },
                 textTransform: 'none',
               }}
             >

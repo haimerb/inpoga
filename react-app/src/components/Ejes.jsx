@@ -18,7 +18,7 @@ const ejes = [
 
 export default function Ejes() {
   return (
-    <Box component="section" sx={{ py: { xs: 3.5, md: 6 }, bgcolor: '#faf9f6', borderTop: '1px solid rgba(26,26,26,0.08)' }}>
+    <Box component="section" sx={{ py: { xs: 3.5, md: 6 }, bgcolor: 'background.default', borderTop: '1px solid rgba(26,26,26,0.08)' }}>
       <Box sx={{ maxWidth: 1140, mx: 'auto', px: { xs: 2, sm: 3 } }}>
         <RevealOnScroll sx={{ textAlign: 'center', mx: 'auto', maxWidth: 680, mb: 4 }}>
           <Box
@@ -48,7 +48,7 @@ export default function Ejes() {
                   display: 'grid', gridTemplateColumns: '2.6rem 1fr auto', alignItems: 'baseline', gap: 1.4,
                   py: 1.4, px: 0.3, borderBottom: '1px solid rgba(26,26,26,0.08)',
                   transition: 'transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease',
-                  '&:hover': { transform: 'translateX(6px)', bgcolor: '#fff', boxShadow: '0 6px 20px rgba(12,79,130,0.06)' },
+                  '&:hover': { transform: 'translateX(6px)', bgcolor: 'background.paper', boxShadow: '0 6px 20px rgba(12,79,130,0.06)' },
                 }}
               >
                 <Typography sx={{ fontFamily: '"Fraunces", serif', fontStyle: 'italic', color: 'terracotta.main', fontSize: '1rem' }}>

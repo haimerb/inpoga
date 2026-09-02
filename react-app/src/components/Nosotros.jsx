@@ -13,7 +13,7 @@ const facts = [
 
 export default function Nosotros() {
   return (
-    <Box id="nosotros" component="section" sx={{ py: { xs: 3.5, md: 6 }, bgcolor: '#fff' }}>
+    <Box id="nosotros" component="section" sx={{ py: { xs: 3.5, md: 6 }, bgcolor: 'background.paper' }}>
       <Box sx={{ maxWidth: 1140, mx: 'auto', px: { xs: 2, sm: 3 } }}>
         <RevealOnScroll sx={{ mb: 4 }}>
           <Box sx={{ maxWidth: 680 }}>
@@ -23,7 +23,7 @@ export default function Nosotros() {
         </RevealOnScroll>
 
         <Grid container columnSpacing={4} rowSpacing={3.5} alignItems="stretch">
-          <Grid item xs={12} md={6} lg={5.5}>
+          <Grid item xs={12} md={6} lg={5}>
             <RevealOnScroll>
               <Typography sx={{ fontSize: '1.3rem', color: 'text.primary', fontWeight: 500, lineHeight: 1.42, mt: 0 }}>
                 La{' '}
@@ -41,7 +41,7 @@ export default function Nosotros() {
             </RevealOnScroll>
           </Grid>
 
-          <Grid item xs={12} md={6} lg={6.5}>
+          <Grid item xs={12} md={6} lg={7}>
             <RevealOnScroll stagger>
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.15 }}>
                 {facts.map((f) => (

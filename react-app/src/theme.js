@@ -2,7 +2,7 @@ import { createTheme } from '@mui/material/styles'
 
 const theme = createTheme({
   palette: {
-    primary: { main: '#0c4f82', contrastText: '#fff' },
+    primary: { main: '#0c4f82', light: '#1a7cc7', dark: '#083a5c', contrastText: '#fff' },
     secondary: { main: '#1a7cc7', contrastText: '#fff' },
     gold: { main: '#ffd200', dark: '#e6b800' },
     terracotta: { main: '#b55a3a' },

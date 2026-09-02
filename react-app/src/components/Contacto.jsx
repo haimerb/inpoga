@@ -67,8 +67,8 @@ export default function Contacto() {
       borderRadius: '0.7rem',
       fontFamily: '"Work Sans", sans-serif',
       fontSize: '0.98rem',
-      color: '#1a1a1a',
-      bgcolor: '#fff',
+      color: 'text.primary',
+      bgcolor: 'background.paper',
       '& fieldset': { borderColor: 'rgba(16,35,59,0.18)', borderWidth: 1.5 },
       '&:hover fieldset': { borderColor: 'rgba(16,35,59,0.3)' },
       '&.Mui-focused fieldset': { borderColor: 'secondary.main', borderWidth: 1.5, boxShadow: '0 0 0 3px rgba(10,93,158,0.12)' },
@@ -77,7 +77,7 @@ export default function Contacto() {
   }
 
   return (
-    <Box id="contacto" component="section" sx={{ py: { xs: 3.5, md: 6 }, bgcolor: '#fff', borderTop: '1px solid rgba(26,26,26,0.08)' }}>
+    <Box id="contacto" component="section" sx={{ py: { xs: 3.5, md: 6 }, bgcolor: 'background.paper', borderTop: '1px solid rgba(26,26,26,0.08)' }}>
       <Box sx={{ maxWidth: 1140, mx: 'auto', px: { xs: 2, sm: 3 } }}>
         <RevealOnScroll sx={{ mb: 4 }}>
           <Box className="section-tag-bottom">Contacto</Box>
@@ -93,7 +93,7 @@ export default function Contacto() {
             noValidate
             onSubmit={handleSubmit}
             sx={{
-              bgcolor: '#faf9f6', border: '1px solid rgba(26,26,26,0.08)', borderRadius: '1.25rem',
+              bgcolor: 'background.default', border: '1px solid rgba(26,26,26,0.08)', borderRadius: '1.25rem',
               p: { xs: 2, sm: 3.2 }, boxShadow: '0 6px 20px rgba(12,79,130,0.06)', maxWidth: 820, mb: 3,
             }}
           >
@@ -156,7 +156,7 @@ export default function Contacto() {
                 mt: 2, borderRadius: '999px', px: 2.8, py: 1.3, fontWeight: 700, fontSize: '0.96rem',
                 bgcolor: 'primary.main', borderBottom: '3px solid gold.main',
                 boxShadow: '0 12px 26px rgba(12,79,130,0.24)', textTransform: 'none',
-                '&:hover': { bgcolor: '#0a4270', boxShadow: '0 18px 34px rgba(12,79,130,0.3)' },
+                '&:hover': { bgcolor: 'primary.dark', boxShadow: '0 18px 34px rgba(12,79,130,0.3)' },
               }}
             >
               Enviar mensaje

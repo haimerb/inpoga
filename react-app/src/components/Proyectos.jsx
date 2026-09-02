@@ -41,7 +41,7 @@ const expCards3 = [
 ]
 
 const cardSx = {
-  bgcolor: '#fff', border: '1px solid rgba(26,26,26,0.08)', borderRadius: '1.25rem', p: { xs: 1.6, sm: 2.2 },
+  bgcolor: 'background.paper', border: '1px solid rgba(26,26,26,0.08)', borderRadius: '1.25rem', p: { xs: 1.6, sm: 2.2 },
   transition: 'transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.3s cubic-bezier(0.25,0.46,0.45,0.94)',
   '&:hover': { transform: 'translateY(-3px)', boxShadow: '0 6px 20px rgba(12,79,130,0.06)' },
 }
@@ -50,7 +50,7 @@ function ExpCard({ year, title, desc }) {
   return (
     <Grid item xs={12} sm={6} md={4}>
       <Box sx={cardSx}>
-        <Box sx={{ display: 'inline-block', fontFamily: '"IBM Plex Mono", monospace', fontSize: '0.75rem', color: '#e6b800', bgcolor: 'rgba(230,184,0,0.1)', py: 0.3, px: 0.9, borderRadius: '999px', mb: 0.8 }}>
+        <Box sx={{ display: 'inline-block', fontFamily: '"IBM Plex Mono", monospace', fontSize: '0.75rem', color: 'gold.main', bgcolor: 'rgba(255,210,0,0.1)', py: 0.3, px: 0.9, borderRadius: '999px', mb: 0.8 }}>
           {year}
         </Box>
         <Typography variant="h6" sx={{ fontSize: '1.05rem', mb: 0.6, color: 'primary.main' }}>{title}</Typography>
@@ -77,7 +77,7 @@ function ProyectoBlock({ tag, title, desc, children }) {
 
 export default function Proyectos() {
   return (
-    <Box id="proyectos" component="section" sx={{ py: { xs: 3.5, md: 6 }, bgcolor: '#fff', borderTop: '1px solid rgba(26,26,26,0.08)' }}>
+    <Box id="proyectos" component="section" sx={{ py: { xs: 3.5, md: 6 }, bgcolor: 'background.paper', borderTop: '1px solid rgba(26,26,26,0.08)' }}>
       <Box sx={{ maxWidth: 1140, mx: 'auto', px: { xs: 2, sm: 3 } }}>
         <RevealOnScroll sx={{ maxWidth: 680, mb: 4 }}>
           <Box className="section-tag-bottom">Nuestro trabajo</Box>
@@ -120,7 +120,7 @@ export default function Proyectos() {
               <Grid item xs={12} sm={6} md={4} key={o.title}>
                 <RevealOnScroll>
                   <Box sx={{
-                    position: 'relative', bgcolor: '#fff', border: '1px solid rgba(26,26,26,0.08)',
+                    position: 'relative', bgcolor: 'background.paper', border: '1px solid rgba(26,26,26,0.08)',
                     borderRadius: '1.25rem', p: { xs: 1.6, sm: 2.4 },
                     transition: 'transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.3s cubic-bezier(0.25,0.46,0.45,0.94)',
                     '&:hover': { transform: 'translateY(-4px)', boxShadow: '0 16px 40px rgba(12,79,130,0.1)' },

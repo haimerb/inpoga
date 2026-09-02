@@ -5,7 +5,7 @@ import RevealOnScroll from './RevealOnScroll'
 
 export default function Territorio() {
   return (
-    <Box component="section" sx={{ py: { xs: 3.5, md: 6 }, bgcolor: '#faf9f6' }}>
+    <Box component="section" sx={{ py: { xs: 3.5, md: 6 }, bgcolor: 'background.default' }}>
       <Box sx={{ maxWidth: 1140, mx: 'auto', px: { xs: 2, sm: 3 } }}>
         <Grid container columnSpacing={4} rowSpacing={3.5} alignItems="start">
           <Grid item xs={12} md={6}>
@@ -23,7 +23,7 @@ export default function Territorio() {
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
                   <Box sx={{
-                    borderRadius: '1.25rem', p: 2.5, bgcolor: '#fff', border: '1px solid rgba(26,26,26,0.08)',
+                    borderRadius: '1.25rem', p: 2.5, bgcolor: 'background.paper', border: '1px solid rgba(26,26,26,0.08)',
                     borderTop: '4px solid secondary.main',
                   }}>
                     <Typography variant="h3" sx={{ mb: 1.2, fontSize: '1.2rem', color: 'primary.main' }}>Sede principal</Typography>
@@ -38,7 +38,7 @@ export default function Territorio() {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <Box sx={{
-                    borderRadius: '1.25rem', p: 2.5, bgcolor: '#fff', border: '1px solid rgba(26,26,26,0.08)',
+                    borderRadius: '1.25rem', p: 2.5, bgcolor: 'background.paper', border: '1px solid rgba(26,26,26,0.08)',
                     borderTop: '4px solid gold.main',
                   }}>
                     <Typography variant="h3" sx={{ mb: 1.2, fontSize: '1.2rem', color: 'primary.main' }}>Proyectos en territorio</Typography>
