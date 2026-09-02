@@ -16,3 +16,4 @@ media/
 *.zip
 node_modules/
 dist/
+PROYECTO*/

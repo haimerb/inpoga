@@ -40,6 +40,26 @@ const expCards3 = [
   { year: '2014 – 2015', title: 'Feria de Cali', desc: 'Participación en la Muestra Empresarial de la Feria de Cali.' },
 ]
 
+const saberesFases = [
+  { title: 'Diagnóstico', desc: 'Mapeo de necesidades y convocatoria de formadores en cada territorio.' },
+  { title: 'Diseño pedagógico', desc: 'Estructuración de áreas del conocimiento y cronogramas según las solicitudes del territorio.' },
+  { title: 'Ejecución en territorio', desc: 'Talleres, seminarios, clases y acompañamiento personalizado de aprendizaje colaborativo.' },
+  { title: 'Monitoreo', desc: 'Evaluación de aprendizajes y guías de aprendizaje local para el mejoramiento continuo.' },
+]
+
+const saberesImages = [
+  { src: '/assets/gallery/transmision-saberes-01.jpg', alt: 'Transmisión de Saberes — taller comunitario' },
+  { src: '/assets/gallery/transmision-saberes-02.jpg', alt: 'Transmisión de Saberes — formación en territorio' },
+  { src: '/assets/gallery/transmision-saberes-03.jpg', alt: 'Transmisión de Saberes — compartir conocimiento' },
+  { src: '/assets/gallery/transmision-saberes-04.jpg', alt: 'Transmisión de Saberes — aprendizaje colaborativo' },
+  { src: '/assets/gallery/transmision-saberes-05.jpg', alt: 'Transmisión de Saberes — capacitación práctica' },
+  { src: '/assets/gallery/transmision-saberes-06.jpg', alt: 'Transmisión de Saberes — comunidad participando' },
+  { src: '/assets/gallery/transmision-saberes-07.jpg', alt: 'Transmisión de Saberes — saberes ancestrales' },
+  { src: '/assets/gallery/transmision-saberes-08.jpg', alt: 'Transmisión de Saberes — actividades formativas' },
+  { src: '/assets/gallery/transmision-saberes-09.jpg', alt: 'Transmisión de Saberes — encuentro de saberes' },
+  { src: '/assets/gallery/transmision-saberes-10.jpg', alt: 'Transmisión de Saberes — integración comunitaria' },
+]
+
 const cardSx = {
   bgcolor: 'background.paper', border: '1px solid rgba(26,26,26,0.08)', borderRadius: '1.25rem', p: { xs: 1.6, sm: 2.2 },
   transition: 'transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.3s cubic-bezier(0.25,0.46,0.45,0.94)',
@@ -158,6 +178,36 @@ export default function Proyectos() {
           <Grid container spacing={2}>
             {expCards3.map((c) => <ExpCard key={c.title} {...c} />)}
           </Grid>
+        </ProyectoBlock>
+
+        <ProyectoBlock tag="En marcha" title="Transmisión de Saberes"
+          desc="Red articuladora del conocimiento que permite que profesionales de diversas áreas y maestros de oficios tradicionales compartan su capital cognitivo de forma directa. Democratiza la formación y acelera el desarrollo sostenible de los territorios."
+        >
+          <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, gap: 1.5, mb: 4 }}>
+            {saberesFases.map((f, i) => (
+              <Box key={f.title} sx={{ display: 'flex', gap: 1.2, alignItems: 'flex-start', p: 1.5, bgcolor: 'rgba(12,79,130,0.03)', borderRadius: '0.75rem' }}>
+                <Box sx={{ fontFamily: '"Fraunces", serif', fontStyle: 'italic', color: 'terracotta.main', fontSize: '1.1rem', fontWeight: 600, minWidth: '1.6rem' }}>
+                  {String(i + 1).padStart(2, '0')}
+                </Box>
+                <Box>
+                  <Typography variant="h6" sx={{ fontSize: '0.95rem', fontWeight: 700, color: 'primary.main', mb: 0.3 }}>{f.title}</Typography>
+                  <Typography sx={{ fontSize: '0.88rem', color: 'text.secondary', lineHeight: 1.5 }}>{f.desc}</Typography>
+                </Box>
+              </Box>
+            ))}
+          </Box>
+
+          <Typography sx={{ fontSize: '0.95rem', color: 'text.secondary', mb: 3, maxWidth: 640 }}>
+            El proyecto se sustenta en la inclusión y valoración del saber, reconociendo dos perfiles de instructores: <Box component="strong" sx={{ color: 'primary.main' }}>profesionales de todas las áreas</Box> y <Box component="strong" sx={{ color: 'primary.main' }}>maestros de oficio y sabedores</Box> con dominio comprobado, independientemente de su titulación académica.
+          </Typography>
+
+          <Box sx={{ display: 'grid', gridTemplateColumns: { xs: 'repeat(2, 1fr)', sm: 'repeat(3, 1fr)', md: 'repeat(5, 1fr)' }, gap: 1.2, mb: 3 }}>
+            {saberesImages.map((img, i) => (
+              <Box key={i} sx={{ borderRadius: '0.75rem', overflow: 'hidden', aspectRatio: '1', boxShadow: '0 4px 12px rgba(12,79,130,0.08)', transition: 'transform 0.3s ease, box-shadow 0.3s ease', '&:hover': { transform: 'scale(1.03)', boxShadow: '0 8px 24px rgba(12,79,130,0.14)' } }}>
+                <Box component="img" src={img.src} alt={img.alt} loading="lazy" sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              </Box>
+            ))}
+          </Box>
         </ProyectoBlock>
       </Box>
     </Box>
