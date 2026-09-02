@@ -1,0 +1,64 @@
+name: Deploy to GoDaddy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+env:
+  FTP_SERVER: ${{ secrets.FTP_SERVER }}
+  FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+  FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+  REMOTE_DIR: /public_html
+  BUILD_DIR: react-app/dist
+
+jobs:
+  build-and-deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: react-app/package-lock.json
+
+      - name: Install dependencies
+        working-directory: react-app
+        run: npm ci
+
+      - name: Lint
+        working-directory: react-app
+        run: npm run lint
+
+      - name: Build
+        working-directory: react-app
+        run: npm run build
+
+      - name: Copy static assets to dist
+        working-directory: react-app
+        run: |
+          cp -r public/assets dist/ 2>/dev/null || true
+          cp public/favicon.svg dist/ 2>/dev/null || true
+          cp public/site.webmanifest dist/ 2>/dev/null || true
+          cp public/robots.txt dist/ 2>/dev/null || true
+          cp public/sitemap.xml dist/ 2>/dev/null || true
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v5.0.0
+        with:
+          server: ${{ env.FTP_SERVER }}
+          username: ${{ env.FTP_USERNAME }}
+          password: ${{ env.FTP_PASSWORD }}
+          local-dir: ${{ env.BUILD_DIR }}/
+          server-dir: ${{ env.REMOTE_DIR }}/
+          protocol: ftp
+          port: 21
+          exclude: |
+            *.tar.gz
+            *.zip
