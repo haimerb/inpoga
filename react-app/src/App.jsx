@@ -13,7 +13,6 @@ import ScrollToTop from './components/ScrollToTop'
 
 const Galeria = lazy(() => import('./components/Galeria'))
 const Contacto = lazy(() => import('./components/Contacto'))
-const VideoModal = lazy(() => import('./components/VideoModal'))
 
 export default function App() {
   return (
@@ -37,9 +36,6 @@ export default function App() {
       <Footer />
       <WhatsAppFloat />
       <ScrollToTop />
-      <Suspense fallback={null}>
-        <VideoModal />
-      </Suspense>
     </>
   )
 }
