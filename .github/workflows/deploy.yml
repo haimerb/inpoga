@@ -57,13 +57,14 @@ jobs:
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
-          server: ${{ secrets.FTP_SERVER }}
+          server: 148.72.0.96
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: react-app/dist/
           server-dir: /public_html/
           protocol: ftps
           port: 21
+          insecure: true
           timeout: 30000
           exclude: |
             *.tar.gz
