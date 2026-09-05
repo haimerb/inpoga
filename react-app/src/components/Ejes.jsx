@@ -61,7 +61,7 @@ export default function Ejes() {
                   <Typography
                     component="small"
                     variant="caption"
-                    sx={{ fontSize: '0.62rem', color: 'gold.main' }}
+                    sx={{ fontSize: '0.62rem', color: 'gold.dark', fontWeight: 600 }}
                   >
                     {e.sub}
                   </Typography>
