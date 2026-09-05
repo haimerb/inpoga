@@ -64,7 +64,6 @@ jobs:
           server-dir: /public_html/
           protocol: ftps
           port: 21
-          insecure: true
           timeout: 30000
           exclude: |
             *.tar.gz
