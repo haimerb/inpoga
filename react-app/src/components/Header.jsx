@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import Box from '@mui/material/Box'
@@ -17,14 +17,33 @@ const navLinks = [
   { label: 'Inicio', href: '#inicio' },
   { label: 'Quiénes somos', href: '#nosotros' },
   { label: 'Misión y visión', href: '#mision-vision' },
+  { label: 'Convocatorias', href: '#convocatorias' },
   { label: 'Proyectos', href: '#proyectos' },
   { label: 'Contacto', href: '#contacto' },
 ]
 
 export default function Header() {
   const theme = useTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
   const [drawerOpen, setDrawerOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('#inicio')
+
+  useEffect(() => {
+    const observerOptions = { root: null, rootMargin: '-20% 0px -70% 0px', threshold: 0 }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) setActiveSection(`#${entry.target.id}`)
+      })
+    }, observerOptions)
+
+    const sections = ['inicio', 'nosotros', 'mision-vision', 'convocatorias', 'proyectos', 'contacto']
+    sections.forEach((id) => {
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
+    })
+
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <>
@@ -46,29 +65,29 @@ export default function Header() {
             width: '100%',
             mx: 'auto',
             px: { xs: 2, sm: 3 },
-            minHeight: 86,
+            minHeight: { xs: 92, sm: 104 },
             gap: 1.25,
           }}
         >
-          <Box component="a" href="#inicio" sx={{ display: 'inline-flex', alignItems: 'center', gap: 1, textDecoration: 'none', color: 'inherit' }}>
+          <Box component="a" href="#inicio" sx={{ display: 'inline-flex', alignItems: 'center', gap: 1.1, textDecoration: 'none', color: 'inherit', minWidth: 0 }}>
             <Box
               component="img"
               src="/assets/logo-gaviotas.png"
               alt="Logo de Integración Popular Gaviotas Corporación"
-              sx={{ width: 48, height: 48, objectFit: 'contain', flex: 'none' }}
+              sx={{ width: { xs: 72, sm: 84 }, height: { xs: 72, sm: 84 }, objectFit: 'contain', flex: 'none' }}
             />
-            <Box sx={{ display: 'flex', flexDirection: 'column', lineHeight: 1.15 }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', lineHeight: 1.15, minWidth: 0 }}>
               <Typography
                 variant="subtitle1"
                 component="strong"
-                sx={{ fontSize: '1.02rem', color: 'text.primary', fontWeight: 700 }}
+                sx={{ fontSize: { xs: '1.15rem', sm: '1.35rem' }, color: 'text.primary', fontWeight: 800, letterSpacing: '-0.01em', whiteSpace: 'nowrap' }}
               >
                 Int. Popular Gaviotas
               </Typography>
               <Typography
                 variant="caption"
                 component="small"
-                sx={{ fontSize: '0.66rem', color: 'text.secondary' }}
+                sx={{ fontSize: { xs: '0.72rem', sm: '0.8rem' }, color: 'text.secondary', fontWeight: 500, letterSpacing: '0.1em' }}
               >
                 Corporación · Desde 1990
               </Typography>
@@ -76,18 +95,20 @@ export default function Header() {
           </Box>
 
           {!isMobile && (
-            <Box component="nav" aria-label="Navegación principal" sx={{ display: 'flex', alignItems: 'center', gap: 2.4, ml: 'auto' }}>
+            <Box component="nav" aria-label="Navegación principal" sx={{ display: 'flex', alignItems: 'center', gap: 2.2, ml: 'auto' }}>
               {navLinks.map((link) => (
                 <Box
                   key={link.href}
                   component="a"
                   href={link.href}
                   sx={{
-                    position: 'relative', fontSize: '0.95rem', fontWeight: 500, color: 'text.secondary',
+                    position: 'relative', fontSize: '0.93rem', fontWeight: 500, whiteSpace: 'nowrap', 
+                    color: activeSection === link.href ? 'primary.main' : 'text.secondary',
                     py: 0.25, textDecoration: 'none',
+                    transition: 'color 0.3s ease',
                     '&::after': {
                       content: '""', position: 'absolute', left: 0, bottom: -2,
-                      width: 0, height: 2, bgcolor: 'gold.main',
+                      width: activeSection === link.href ? '100%' : 0, height: 2, bgcolor: 'gold.main',
                       transition: 'width 0.25s ease',
                     },
                     '&:hover': { color: 'text.primary', '&::after': { width: '100%' } },
@@ -140,7 +161,11 @@ export default function Header() {
                   component="a"
                   href={link.href}
                   onClick={() => setDrawerOpen(false)}
-                  sx={{ py: 1.5, px: 3 }}
+                  sx={{ 
+                    py: 1.5, px: 3, 
+                    color: activeSection === link.href ? 'primary.main' : 'inherit',
+                    fontWeight: activeSection === link.href ? 700 : 400 
+                  }}
                 >
                   <ListItemText primary={link.label} />
                 </ListItemButton>

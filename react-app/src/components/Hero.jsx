@@ -1,7 +1,6 @@
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
-import Grid from '@mui/material/Grid'
 import RevealOnScroll from './RevealOnScroll'
 
 const stats = [
@@ -21,10 +20,23 @@ export default function Hero() {
       }}
     >
       <Box sx={{ maxWidth: 1140, mx: 'auto', px: { xs: 2, sm: 3 }, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 2 }}>
-        <RevealOnScroll sx={{ maxWidth: 720 }}>
-          <Box className="eyebrow" sx={{ mb: 2, display: 'inline-block' }}>
+        <RevealOnScroll sx={{ maxWidth: 900 }}>
+          <Typography 
+            variant="h4" 
+            component="p" 
+            sx={{ 
+              mb: 4, 
+              display: 'inline-block', 
+              color: 'primary.main', 
+              fontWeight: 900, 
+              fontSize: { xs: '1.6rem', sm: '2.35rem' },
+              letterSpacing: '-0.02em',
+              lineHeight: 1.15,
+              textTransform: 'uppercase'
+            }}
+          >
             Integración Popular Gaviotas Corporación · Desde 1990
-          </Box>
+          </Typography>
 
           <Typography variant="h1" component="h1" sx={{ fontSize: { xs: 'clamp(1.8rem,7vw,2.6rem)', sm: 'clamp(2.8rem,5.2vw,5rem)' }, my: 2.2 }}>
             Desarrollo comunitario
@@ -67,23 +79,23 @@ export default function Hero() {
             </Button>
           </Box>
 
-          <Grid container spacing={2} sx={{ mt: 4, pt: 2, borderTop: '1px solid rgba(26,26,26,0.08)', maxWidth: 560, mx: 'auto' }}>
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', justifyContent: 'center', mt: 4, pt: 2, borderTop: '1px solid rgba(26,26,26,0.08)', maxWidth: 900, mx: 'auto', columnGap: { xs: 2, sm: 3.5 }, rowGap: { xs: 2, sm: 3 } }}>
             {stats.map((s) => (
-              <Grid key={s.dt} item xs={4}>
-                <Box sx={{ textAlign: 'center' }}>
-                  <Typography variant="h3" sx={{ fontStyle: 'italic', fontSize: { xs: '1.5rem', sm: '1.9rem' }, lineHeight: 1, color: 'terracotta.main', fontWeight: 600 }}>
-                    {s.dt}
-                  </Typography>
-                  <Typography component="strong" sx={{ display: 'block', fontSize: '0.95rem', color: 'primary.main', fontWeight: 700, mt: 0.5 }}>
+              <Box key={s.dt} sx={{ display: 'flex', alignItems: 'baseline', gap: { xs: 0.6, sm: 1 } }}>
+                <Typography sx={{ fontStyle: 'italic', fontSize: { xs: '1.75rem', sm: '2.2rem' }, lineHeight: 1, color: 'terracotta.main', fontWeight: 600, whiteSpace: 'nowrap' }}>
+                  {s.dt}
+                </Typography>
+                <Box>
+                  <Typography component="strong" sx={{ display: 'block', fontSize: '1.05rem', color: 'primary.main', fontWeight: 700, lineHeight: 1.15 }}>
                     {s.strong}
                   </Typography>
-                  <Typography sx={{ fontSize: '0.82rem', color: 'text.secondary' }}>
+                  <Typography sx={{ fontSize: '0.9rem', color: 'text.secondary', lineHeight: 1.15 }}>
                     {s.span}
                   </Typography>
                 </Box>
-              </Grid>
+              </Box>
             ))}
-          </Grid>
+          </Box>
         </RevealOnScroll>
       </Box>
     </Box>
