@@ -3,6 +3,7 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
+import CircularProgress from '@mui/material/CircularProgress'
 import MenuItem from '@mui/material/MenuItem'
 import Grid from '@mui/material/Grid'
 import RevealOnScroll from './RevealOnScroll'
@@ -21,6 +22,8 @@ export default function Contacto() {
   const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
   const [errorGlobal, setErrorGlobal] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
+  const [sending, setSending] = useState(false)
 
   const validate = () => {
     const errs = {}
@@ -35,25 +38,43 @@ export default function Contacto() {
     return errs
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (honeypot) return
     const errs = validate()
     if (Object.keys(errs).length > 0) { setErrors(errs); return }
     setErrors({})
+    setErrorGlobal(false)
+    setErrorMessage('')
+    setSubmitted(false)
+    setSending(true)
 
-    const encode = (s) => encodeURIComponent(s).replace(/%20/g, '+').replace(/%0A/g, '%0D%0A')
-    const subject = `Contacto desde la web — ${form.asunto}`
-    let body = `Nombre: ${form.nombre}\r\nCorreo: ${form.email}\r\n`
-    if (form.telefono) body += `Teléfono: ${form.telefono}\r\n`
-    body += `Motivo: ${form.asunto}\r\n\r\nMensaje:\r\n${form.mensaje}`
-
-    const mailto = `mailto:contacto@corpogaviotas.org?subject=${encode(subject)}&body=${encode(body)}`
     try {
-      window.location.href = mailto
+      const payload = { ...form, _gotcha: honeypot }
+      const response = await fetch('/contact.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+
+      const data = await response.json().catch(() => null)
+
+      if (!response.ok) {
+        if (data && data.errors) {
+          setErrors(data.errors)
+        } else {
+          setErrorGlobal(true)
+          setErrorMessage((data && data.message) || 'No se pudo enviar el mensaje. Intentá de nuevo.')
+        }
+        return
+      }
+
       setSubmitted(true)
+      setForm({ nombre: '', email: '', telefono: '', asunto: '', mensaje: '' })
     } catch {
       setErrorGlobal(true)
+    } finally {
+      setSending(false)
     }
   }
 
@@ -150,29 +171,35 @@ export default function Contacto() {
             />
 
             <Button
-              type="submit" variant="contained"
+              type="submit" variant="contained" disabled={sending}
               sx={{
                 mt: 2, borderRadius: '999px', px: 2.8, py: 1.3, fontWeight: 700, fontSize: '0.96rem',
                 bgcolor: 'primary.main', borderBottom: '3px solid gold.main',
                 boxShadow: '0 12px 26px rgba(12,79,130,0.24)', textTransform: 'none',
                 '&:hover': { bgcolor: 'primary.dark', boxShadow: '0 18px 34px rgba(12,79,130,0.3)' },
+                '&:disabled': { bgcolor: 'primary.main', color: 'rgba(255,255,255,0.85)' },
               }}
             >
-              Enviar mensaje
+              {sending ? (
+                <Box sx={{ display: 'inline-flex', alignItems: 'center', gap: 1 }}>
+                  <CircularProgress size={18} thickness={5} sx={{ color: '#fff' }} />
+                  Enviando…
+                </Box>
+              ) : 'Enviar mensaje'}
             </Button>
 
-            {submitted && (
-              <Box sx={{ mt: 1.5, p: 1.5, borderRadius: '0.7rem', bgcolor: 'success.light', color: 'success.main', border: '1px solid', borderColor: 'success.border', fontSize: '0.95rem' }}>
-                <Typography sx={{ m: 0 }}>
-                  Mensaje preparado. Se abrió tu cliente de correo con los datos del formulario. Solo tenés que presionar{' '}
-                  <Box component="strong">Enviar</Box>.
-                </Typography>
-              </Box>
-            )}
+             {submitted && (
+               <Box sx={{ mt: 1.5, p: 1.5, borderRadius: '0.7rem', bgcolor: 'success.light', color: 'success.main', border: '1px solid', borderColor: 'success.border', fontSize: '0.95rem' }}>
+                 <Typography sx={{ m: 0 }}>
+                   <Box component="strong">¡Mensaje enviado!</Box> Hemos recibido tu información y nos pondremos en contacto con vos pronto.
+                 </Typography>
+               </Box>
+             )}
+
             {errorGlobal && (
               <Box sx={{ mt: 1.5, p: 1.5, borderRadius: '0.7rem', bgcolor: 'error.light', color: 'error.main', border: '1px solid', borderColor: 'error.border', fontSize: '0.95rem' }}>
                 <Typography sx={{ m: 0 }}>
-                  No se pudo abrir el correo. Escribinos directamente a{' '}
+                  {errorMessage || 'No se pudo enviar el mensaje.'} Escribinos directamente a{' '}
                   <Box component="a" href="mailto:contacto@corpogaviotas.org" sx={{ color: 'secondary.main', fontWeight: 600 }}>contacto@corpogaviotas.org</Box>{' '}
                   o al <Box component="a" href="tel:+573202205497" sx={{ color: 'secondary.main', fontWeight: 600 }}>+57 320 220 5497</Box>.
                 </Typography>
