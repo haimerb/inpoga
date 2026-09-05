@@ -4,7 +4,7 @@ const theme = createTheme({
   palette: {
     primary: { main: '#0c4f82', light: '#1a7cc7', dark: '#083a5c', contrastText: '#fff' },
     secondary: { main: '#1a7cc7', contrastText: '#fff' },
-    gold: { main: '#ffd200', dark: '#e6b800' },
+    gold: { main: '#ffd200', dark: '#7a5c00', contrastText: '#3a2f00' },
     terracotta: { main: '#b55a3a' },
     success: { main: '#2e7d32', light: '#e8f5e9', border: '#a5d6a7' },
     error: { main: '#c62828', light: '#fbe9e7', border: '#ef9a9a' },

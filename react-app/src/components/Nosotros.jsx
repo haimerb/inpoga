@@ -54,7 +54,7 @@ export default function Nosotros() {
                       '&:hover': { transform: 'translateY(-3px)', boxShadow: '0 6px 20px rgba(12,79,130,0.06)', borderLeftColor: 'terracotta.main' },
                     }}
                   >
-                    <Typography variant="caption" sx={{ color: 'gold.main', mb: 0.5 }}>
+                    <Typography variant="caption" sx={{ color: 'gold.dark', mb: 0.5 }}>
                       {f.label}
                     </Typography>
                     <Typography component="strong" variant="h4" sx={{ display: 'block', color: 'primary.main' }}>
