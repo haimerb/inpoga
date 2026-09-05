@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import Grid from '@mui/material/Grid'
 import Link from '@mui/material/Link'
 
 const footerLinkCol = [
@@ -56,9 +55,17 @@ export default function Footer() {
   return (
     <Box component="footer" sx={{ bgcolor: 'primary.main', color: 'rgba(255,255,255,0.82)', pt: 5, pb: 3, position: 'relative' }}>
       <Box sx={{ maxWidth: 1140, mx: 'auto', px: { xs: 2, sm: 3 } }}>
-        <Grid container columnSpacing={3} rowSpacing={3} sx={{ pb: 4 }}>
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: '4fr 2fr 2fr 3fr' },
+            gap: { xs: 2.5, md: 3 },
+            alignItems: 'start',
+            pb: 4,
+          }}
+        >
           {/* Brand */}
-          <Grid item xs={12} md={3}>
+          <Box>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1.5 }}>
               <Box component="img" src="/assets/logo-gaviotas.png" alt="Logo de Integración Popular Gaviotas Corporación" loading="lazy" sx={{ width: 48, height: 48, objectFit: 'contain' }} />
               <Box sx={{ display: 'flex', flexDirection: 'column', lineHeight: 1.15 }}>
@@ -70,14 +77,14 @@ export default function Footer() {
                 </Typography>
               </Box>
             </Box>
-            <Typography sx={{ color: 'rgba(255,255,255,0.68)', maxWidth: '38ch', fontSize: '0.95rem' }}>
+            <Typography sx={{ color: 'rgba(255,255,255,0.68)', maxWidth: '34ch', fontSize: '0.95rem' }}>
               Organización sin ánimo de lucro dedicada al desarrollo integral de comunidades de Cali y sus corregimientos desde 1990. Línea de acción: Mujeres Empresarias.
             </Typography>
-          </Grid>
+          </Box>
 
           {/* Link columns */}
           {footerLinkCol.map((col) => (
-            <Grid item xs={6} sm={4} md={3} key={col.title}>
+            <Box key={col.title}>
               <Typography component="h3" sx={h3Sx}>
                 {col.title}
               </Typography>
@@ -92,11 +99,11 @@ export default function Footer() {
                   ))}
                 </Box>
               </Box>
-            </Grid>
+            </Box>
           ))}
 
           {/* Contact */}
-          <Grid item xs={12} sm={4} md={3}>
+          <Box>
             <Typography component="h3" sx={h3Sx}>
               Contacto
             </Typography>
@@ -145,8 +152,8 @@ export default function Footer() {
                 </Link>
               ))}
             </Box>
-          </Grid>
-        </Grid>
+          </Box>
+        </Box>
 
         {/* Copyright */}
         <Box sx={{ borderTop: '1px solid rgba(255,255,255,0.12)', py: 1.5, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0.8 }}>
