@@ -63,7 +63,7 @@ jobs:
           for d in "" "public_html" "www" "html" "domains" "domains/corpogaviotas.org" "domains/corpogaviotas.org/public_html"; do
             url="ftp://${FTP_SERVER}/"
             [ -n "$d" ] && url="ftp://${FTP_SERVER}/${d}/"
-            out=$(curl -sS --ssl-reqd --connect-timeout 15 --max-time 40 -u "${FTP_USERNAME}:${FTP_PASSWORD}" "$url" 2>&1)
+            out=$(curl -skS --ssl-reqd --connect-timeout 15 --max-time 40 -u "${FTP_USERNAME}:${FTP_PASSWORD}" "$url" 2>&1)
             echo "=== /${d} ==="
             echo "$out" | grep -cE "^-|^d" | xargs echo "  entradas:"
             echo "$out" | grep -E "index.html|favicon|assets|public_html|sync-state" | head -6
