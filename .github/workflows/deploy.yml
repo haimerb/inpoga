@@ -61,28 +61,15 @@ jobs:
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
         run: |
-          for d in "" "public_html" "corpogaviotas.org" "domains/corpogaviotas.org" "www" "html" "app" "htdocs"; do
-            url="ftp://${FTP_SERVER}/"
-            [ -n "$d" ] && url="ftp://${FTP_SERVER}/${d}/"
-            out=$(curl -skS --ssl-reqd --connect-timeout 15 --max-time 40 -u "${FTP_USERNAME}:${FTP_PASSWORD}" "$url" 2>&1)
-            echo "=== /${d} ==="
-            printf '%s\n' "$out" | head -40
-          done
-        continue-on-error: true
-
-      - name: Debug FTP listing assets
-        env:
-          FTP_SERVER: 148.72.0.96
-          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-        run: |
-          for d in "assets" "assets/gallery" "assets/institucional" "public_html/assets"; do
-            url="ftp://${FTP_SERVER}/${d}/"
-            echo "=== /${d} ==="
-            curl -skS --ssl-reqd --connect-timeout 15 --max-time 40 -u "${FTP_USERNAME}:${FTP_PASSWORD}" "$url" 2>&1 | head -25
-          done
-        continue-on-error: true
-
+          set +e
+          echo -n "marker-public-html" > /tmp/mk.txt
+          curl -skS --ftp-create-dirs --connect-timeout 15 --max-time 40 -u "${FTP_USERNAME}:${FTP_PASSWORD}" -T /tmp/mk.txt "ftp://${FTP_SERVER}/public_html/marker2-0913.txt" 2>&1
+          echo "--- upload via FTP root ---"
+          curl -skS --ftp-create-dirs --connect-timeout 15 --max-time 40 -u "${FTP_USERNAME}:${FTP_PASSWORD}" -T /tmp/mk.txt "ftp://${FTP_SERVER}/marker2-0913.txt" 2>&1
+          sleep 5
+          echo "--- HTTP check ---"
+          curl -skS -o /dev/null -w "%{http_code}\n" "https://corpogaviotas.org/marker2-0913.txt"
+      
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
