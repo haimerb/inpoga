@@ -54,27 +54,17 @@ jobs:
           echo "FTP_PASSWORD length: ${#FTP_PASSWORD}"
           echo "====================="
 
-      - name: Debug FTP download
+      - name: Debug FTP listing
         env:
           FTP_SERVER: 148.72.0.96
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
         run: |
-          mkdir -p /tmp/ftpcheck
-          for p in "." "public_html"; do
-            tgt="${p}"
-            [ "$p" = "." ] && tgt="."
-            echo "=== descargando /${tgt}/index.html ==="
-            curl -v --ftp-ssl --ciphers DEFAULT@SECLEVEL=1 --connect-timeout 15 --max-time 90 -u "${FTP_USERNAME}:${FTP_PASSWORD}" -o "/tmp/ftpcheck/index-${p//\//_}.html" "ftp://${FTP_SERVER}/${tgt}/index.html" 2>&1 | grep -E "Connected|error|Error|RETR|229|230|550|Failed|PBSZ|new connections|Passive" | head -8
-            if [ -s "/tmp/ftpcheck/index-${p//\//_}.html" ]; then
-              echo "hash: $(sha256sum /tmp/ftpcheck/index-${p//\//_}.html | cut -d' ' -f1)"
-              echo "refs: $(grep -oE 'index-[A-Za-z0-9_-]+\.js' /tmp/ftpcheck/index-${p//\//_}.html | sort -u | head -3)"
-            else
-              echo "(no existe o vacío)"
-            fi
+          for i in 1 2 3; do
+            echo "=== intento $i: raiz ==="
+            out=$(curl -sS --ssl-reqd --connect-timeout 20 --max-time 45 -u "${FTP_USERNAME}:${FTP_PASSWORD}" "ftp://${FTP_SERVER}/" 2>&1) && { echo "$out" | grep -E "index.html|assets|favicon|public_html|probe|logos|institucional"; echo "OK"; break; } || echo "fallo: $out"
+            sleep 10
           done
-          echo "=== build local refs ==="
-          grep -oE 'index-[A-Za-z0-9_-]+\.js' react-app/dist/index.html | sort -u | head -3
 
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
