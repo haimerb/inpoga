@@ -9,6 +9,8 @@ const stats = [
   { dt: '3', strong: 'Valores', span: 'veracidad, bondad, respeto' },
 ]
 
+const donateHref = 'https://wa.me/573202205497?text=Hola%2C%20estoy%20interesado%20en%20donar.%20%C2%BFQu%C3%A9%20pasos%20debo%20seguir%3F'
+
 export default function Hero() {
   return (
     <Box
@@ -76,6 +78,20 @@ export default function Hero() {
               }}
             >
               Nuestros proyectos
+            </Button>
+            <Button
+              component="a" href={donateHref} target="_blank" rel="noopener noreferrer"
+              variant="contained"
+              aria-label="Doná aquí (se abre WhatsApp)"
+              sx={{
+                borderRadius: '999px', px: 2.8, py: 1.3, fontWeight: 700, fontSize: '0.96rem',
+                bgcolor: 'terracotta.main', borderBottom: '3px solid gold.main',
+                boxShadow: '0 12px 26px rgba(181,90,58,0.28)',
+                '&:hover': { bgcolor: '#9a4a2d', boxShadow: '0 18px 34px rgba(181,90,58,0.36)' },
+                textTransform: 'none',
+              }}
+            >
+              Doná aquí
             </Button>
           </Box>
 

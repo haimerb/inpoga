@@ -93,7 +93,19 @@ export default function Contacto() {
       '&:hover fieldset': { borderColor: 'rgba(16,35,59,0.3)' },
       '&.Mui-focused fieldset': { borderColor: 'secondary.main', borderWidth: 1.5, boxShadow: '0 0 0 3px rgba(10,93,158,0.12)' },
     },
-    '& .MuiInputLabel-root': { fontSize: '0.85rem', fontWeight: 600, color: 'primary.main' },
+    '& .MuiInputLabel-root': {
+      fontSize: '0.85rem',
+      fontWeight: 600,
+      color: 'primary.main',
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      maxWidth: '100%',
+    },
+    '& .MuiInputBase-input': {
+      '&::placeholder': { opacity: 1, color: 'text.secondary', fontSize: '0.92rem' },
+    },
+    '& .MuiFormHelperText-root': { fontSize: '0.78rem', ml: 0.5 },
   }
 
   return (
@@ -120,38 +132,39 @@ export default function Contacto() {
             <input type="text" name="_gotcha" className="honeypot" tabIndex={-1} autoComplete="off" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
 
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={12} md={6}>
                 <TextField
                   fullWidth required label="Nombre" placeholder="Tu nombre completo"
                   value={form.nombre} onChange={handleChange('nombre')}
                   error={!!errors.nombre} helperText={errors.nombre}
-                  inputProps={{ minLength: 2, autoComplete: 'name' }}
+                  slotProps={{ htmlInput: { minLength: 2, autoComplete: 'name' } }}
                   sx={fieldSx}
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={12} md={6}>
                 <TextField
                   fullWidth required label="Correo electrónico" placeholder="tu@correo.com" type="email"
                   value={form.email} onChange={handleChange('email')}
                   error={!!errors.email} helperText={errors.email}
-                  inputProps={{ autoComplete: 'email' }}
+                  slotProps={{ htmlInput: { autoComplete: 'email' } }}
                   sx={fieldSx}
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={12} md={6}>
                 <TextField
                   fullWidth label="Teléfono" placeholder="+57 300 123 4567" type="tel"
                   value={form.telefono} onChange={handleChange('telefono')}
                   error={!!errors.telefono} helperText={errors.telefono}
-                  inputProps={{ pattern: '[\\+]?[0-9\\s\\-\\(\\)]{7,15}', autoComplete: 'tel' }}
+                  slotProps={{ htmlInput: { pattern: '[\\+]?[0-9\\s\\-\\(\\)]{7,15}', autoComplete: 'tel' } }}
                   sx={fieldSx}
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={12} md={6}>
                 <TextField
-                  fullWidth required select autoWidth={false} label="¿En qué podés aportar?"
+                  fullWidth required select label="¿En qué podés aportar?"
                   value={form.asunto} onChange={handleChange('asunto')}
                   error={!!errors.asunto} helperText={errors.asunto}
+                  slotProps={{ select: { autoWidth: false } }}
                   sx={fieldSx}
                 >
                   {asuntoOptions.map((opt) => (
@@ -166,7 +179,7 @@ export default function Contacto() {
               placeholder="Contanos un poco sobre vos y tu comunidad…"
               value={form.mensaje} onChange={handleChange('mensaje')}
               error={!!errors.mensaje} helperText={errors.mensaje}
-              inputProps={{ minLength: 10 }}
+              slotProps={{ htmlInput: { minLength: 10 } }}
               sx={{ ...fieldSx, mt: 2 }}
             />
 

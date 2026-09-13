@@ -4,7 +4,7 @@ export default function WhatsAppFloat() {
   return (
     <Box
       component="a"
-      href="https://wa.me/573202205497?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20La%20Ruta%20de%20los%20Oficios"
+      href="https://wa.me/573202205497?text=Hola%20Quiero%20mas%20informaci%C3%B3n%20sobre%20ustedes%20y%20sus%20programas"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Escribinos por WhatsApp"

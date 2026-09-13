@@ -7,6 +7,7 @@ import MisionVision from './components/MisionVision'
 import Proyectos from './components/Proyectos'
 import Ejes from './components/Ejes'
 import Territorio from './components/Territorio'
+import Noticias from './components/Noticias'
 import Footer from './components/Footer'
 import WhatsAppFloat from './components/WhatsAppFloat'
 import ScrollToTop from './components/ScrollToTop'
@@ -29,6 +30,7 @@ export default function App() {
         </Suspense>
         <Ejes />
         <Territorio />
+        <Noticias />
         <Suspense fallback={null}>
           <Contacto />
         </Suspense>

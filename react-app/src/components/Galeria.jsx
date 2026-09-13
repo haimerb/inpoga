@@ -4,34 +4,31 @@ import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
 import RevealOnScroll from './RevealOnScroll'
 import MediaModal from './MediaModal'
+import { getGallery } from '../lib/gaviotasApi'
 
-const galleryItems = [
-  { src: '/assets/gallery/gaviotas-04.jpg', alt: 'Taller de oficios para mujeres emprendedoras en Cali, Valle del Cauca', tag: 'Mujeres Empresarias' },
-  { src: '/assets/gallery/gaviotas-16.jpg', alt: 'Capacitación en emprendimiento femenino para mujeres del Valle del Cauca', tag: 'Mujeres Empresarias' },
-  { src: '/assets/gallery/gaviotas-19.jpg', alt: 'Capacitación en territorio para mujeres del suroccidente', tag: 'Mujeres Empresarias' },
-  { src: '/assets/gallery/gaviotas-12.jpg', alt: 'Equipo de la Corporación con el estandarte en Cali, Valle del Cauca', tag: 'Mujeres Empresarias' },
-  { src: '/assets/gallery/gaviotas-20.jpg', alt: 'Reunión de trabajo en Villa Carmelo, Pance', tag: 'La Ruta de los Oficios' },
-  { src: '/assets/gallery/gaviotas-31.jpg', alt: 'Trabajo en comunidad de mujeres artesanas en Pance, Cali', tag: 'La Ruta de los Oficios' },
-  { src: '/assets/gallery/gaviotas-29.jpg', alt: 'Actividad comunitaria en el suroccidente de Cali', tag: 'Transmisión de Saberes' },
-  { src: '/assets/gallery/gaviotas-21.jpg', alt: 'Equipo reunido en la sede de la Corporación', tag: 'Transmisión de Saberes' },
+const fallbackItems = [
+  { src: '/assets/gallery/gaviotas-04.jpg', alt: 'Taller de oficios para mujeres emprendedoras en Cali, Valle del Cauca' },
+  { src: '/assets/gallery/gaviotas-16.jpg', alt: 'Capacitación en emprendimiento femenino para mujeres del Valle del Cauca' },
+  { src: '/assets/gallery/gaviotas-19.jpg', alt: 'Capacitación en territorio para mujeres del suroccidente' },
+  { src: '/assets/gallery/gaviotas-12.jpg', alt: 'Equipo de la Corporación con el estandarte en Cali, Valle del Cauca' },
+  { src: '/assets/gallery/gaviotas-20.jpg', alt: 'Reunión de trabajo en Villa Carmelo, Pance' },
+  { src: '/assets/gallery/gaviotas-31.jpg', alt: 'Trabajo en comunidad de mujeres artesanas en Pance, Cali' },
+  { src: '/assets/gallery/gaviotas-29.jpg', alt: 'Actividad comunitaria en el suroccidente de Cali' },
+  { src: '/assets/gallery/gaviotas-21.jpg', alt: 'Equipo reunido en la sede de la Corporación' },
   { src: '/assets/gallery/transmision-saberes-01.jpg', alt: 'Transmisión de Saberes — taller comunitario', tag: 'Transmisión de Saberes' },
-  { src: '/assets/gallery/transmision-saberes-02.jpg', alt: 'Transmisión de Saberes — formación en territorio', tag: 'Transmisión de Saberes' },
   { src: '/assets/gallery/transmision-saberes-03.jpg', alt: 'Transmisión de Saberes — compartir conocimiento', tag: 'Transmisión de Saberes' },
   { src: '/assets/gallery/transmision-saberes-04.jpg', alt: 'Transmisión de Saberes — aprendizaje colaborativo', tag: 'Transmisión de Saberes' },
-  { src: '/assets/gallery/transmision-saberes-05.jpg', alt: 'Transmisión de Saberes — capacitación práctica', tag: 'Transmisión de Saberes' },
-  { src: '/assets/gallery/transmision-saberes-06.jpg', alt: 'Transmisión de Saberes — comunidad participando', tag: 'Transmisión de Saberes' },
   { src: '/assets/gallery/transmision-saberes-07.jpg', alt: 'Transmisión de Saberes — saberes ancestrales', tag: 'Transmisión de Saberes' },
-  { src: '/assets/gallery/transmision-saberes-08.jpg', alt: 'Transmisión de Saberes — actividades formativas', tag: 'Transmisión de Saberes' },
   { src: '/assets/gallery/transmision-saberes-09.jpg', alt: 'Transmisión de Saberes — encuentro de saberes', tag: 'Transmisión de Saberes' },
   { src: '/assets/gallery/transmision-saberes-10.jpg', alt: 'Transmisión de Saberes — integración comunitaria', tag: 'Transmisión de Saberes' },
-  { isVideo: true, poster: '/assets/gallery/video-04-poster.jpg', video: '/assets/gallery/video-04.mp4', src: '/assets/gallery/video-04-poster.jpg', alt: 'Video: testimonios y actividades de las mujeres empresarias', tag: 'Mujeres Empresarias' },
-  { isVideo: true, poster: '/assets/gallery/video-06-poster.jpg', video: '/assets/gallery/video-06.mp4', src: '/assets/gallery/video-06-poster.jpg', alt: 'Video: celebración y logros de las mujeres empresarias', tag: 'Mujeres Empresarias' },
-  { isVideo: true, poster: '/assets/gallery/video-07-poster.jpg', video: '/assets/gallery/video-07.mp4', src: '/assets/gallery/video-07-poster.jpg', alt: 'Video: recorrido de la Ruta de los Oficios', tag: 'La Ruta de los Oficios' },
-  { isVideo: true, poster: '/assets/gallery/video-03-poster.jpg', video: '/assets/gallery/video-03.mp4', src: '/assets/gallery/video-03-poster.jpg', alt: 'Video: encuentro comunitario en territorio', tag: 'La Ruta de los Oficios' },
-  { isVideo: true, poster: '/assets/gallery/video-01-poster.jpg', video: '/assets/gallery/video-01.mp4', src: '/assets/gallery/video-01-poster.jpg', alt: 'Video: actividad de la Corporación en territorio', tag: 'Transmisión de Saberes' },
-  { isVideo: true, poster: '/assets/gallery/video-02-poster.jpg', video: '/assets/gallery/video-02.mp4', src: '/assets/gallery/video-02-poster.jpg', alt: 'Video: jornada formativa con la comunidad', tag: 'Transmisión de Saberes' },
-  { isVideo: true, poster: '/assets/gallery/video-05-poster.jpg', video: '/assets/gallery/video-05.mp4', src: '/assets/gallery/video-05-poster.jpg', alt: 'Video: taller de formación en oficios', tag: 'Transmisión de Saberes' },
-  { isVideo: true, poster: '/assets/gallery/video-08-poster.jpg', video: '/assets/gallery/video-08.mp4', src: '/assets/gallery/video-08-poster.jpg', alt: 'Video: clausura y reconocimientos del Curso de Piano', tag: 'Curso de Piano y Clausura' },
+  { isVideo: true, poster: '/assets/gallery/video-04-poster.jpg', video: '/assets/gallery/video-04.mp4', src: '/assets/gallery/video-04-poster.jpg', alt: 'Video: testimonios y actividades de las mujeres empresarias' },
+  { isVideo: true, poster: '/assets/gallery/video-06-poster.jpg', video: '/assets/gallery/video-06.mp4', src: '/assets/gallery/video-06-poster.jpg', alt: 'Video: celebración y logros de las mujeres empresarias' },
+  { isVideo: true, poster: '/assets/gallery/video-07-poster.jpg', video: '/assets/gallery/video-07.mp4', src: '/assets/gallery/video-07-poster.jpg', alt: 'Video: recorrido de la Ruta de los Oficios' },
+  { isVideo: true, poster: '/assets/gallery/video-03-poster.jpg', video: '/assets/gallery/video-03.mp4', src: '/assets/gallery/video-03-poster.jpg', alt: 'Video: encuentro comunitario en territorio' },
+  { isVideo: true, poster: '/assets/gallery/video-01-poster.jpg', video: '/assets/gallery/video-01.mp4', src: '/assets/gallery/video-01-poster.jpg', alt: 'Video: actividad de la Corporación en territorio' },
+  { isVideo: true, poster: '/assets/gallery/video-02-poster.jpg', video: '/assets/gallery/video-02.mp4', src: '/assets/gallery/video-02-poster.jpg', alt: 'Video: jornada formativa con la comunidad' },
+  { isVideo: true, poster: '/assets/gallery/video-05-poster.jpg', video: '/assets/gallery/video-05.mp4', src: '/assets/gallery/video-05-poster.jpg', alt: 'Video: taller de formación en oficios' },
+  { isVideo: true, poster: '/assets/gallery/video-08-poster.jpg', video: '/assets/gallery/video-08.mp4', src: '/assets/gallery/video-08-poster.jpg', alt: 'Video: clausura y reconocimientos del Curso de Piano' },
 ]
 
 const typeChipSx = {
@@ -72,15 +69,24 @@ export default function Galeria() {
   const [openIndex, setOpenIndex] = useState(null)
   const [canLeft, setCanLeft] = useState(false)
   const [canRight, setCanRight] = useState(true)
+  const [galleryItems, setGalleryItems] = useState(fallbackItems)
   const scrollRef = useRef(null)
+
+  useEffect(() => {
+    let active = true
+    getGallery().then((items) => {
+      if (active && items && items.length) setGalleryItems(items)
+    })
+    return () => { active = false }
+  }, [])
 
   const tags = useMemo(
     () => ['Todo', ...Array.from(new Set(galleryItems.map((i) => i.tag).filter(Boolean)))],
-    []
+    [galleryItems]
   )
   const items = useMemo(
     () => (filter === 'Todo' ? galleryItems : galleryItems.filter((i) => i.tag === filter)),
-    [filter]
+    [filter, galleryItems]
   )
 
   const updateArrows = useCallback(() => {

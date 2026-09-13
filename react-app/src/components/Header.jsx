@@ -22,6 +22,8 @@ const navLinks = [
   { label: 'Contacto', href: '#contacto' },
 ]
 
+const donateHref = 'https://wa.me/573202205497?text=Hola%2C%20estoy%20interesado%20en%20donar.%20%C2%BFQu%C3%A9%20pasos%20debo%20seguir%3F'
+
 export default function Header() {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
@@ -179,6 +181,18 @@ export default function Header() {
                 sx={{ py: 1.5, px: 3, color: 'primary.main', fontWeight: 700 }}
               >
                 <ListItemText primary="Sumate" />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton
+                component="a"
+                href={donateHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setDrawerOpen(false)}
+                sx={{ py: 1.5, px: 3, color: 'terracotta.main', fontWeight: 700 }}
+              >
+                <ListItemText primary="Doná aquí" />
               </ListItemButton>
             </ListItem>
           </List>

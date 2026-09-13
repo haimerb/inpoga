@@ -15,6 +15,11 @@ const footerLinkCol = [
     { label: 'Mujeres Empresarias', href: '#proyectos' },
     { label: 'Galería', href: '#galeria' },
   ]},
+  { title: 'Enlaces de interés', links: [
+    { label: 'Cali', href: 'https://www.cali.gov.co', logo: '/assets/institucional/cali.svg' },
+    { label: 'DIAN', href: 'https://www.dian.gov.co', logo: '/assets/institucional/dian.svg' },
+    { label: 'CCC', href: 'https://www.ccc.org.co', logo: '/assets/institucional/ccc.svg' },
+  ]},
 ]
 
 const h3Sx = {
@@ -58,7 +63,7 @@ export default function Footer() {
         <Box
           sx={{
             display: 'grid',
-            gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: '4fr 2fr 2fr 3fr' },
+            gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: '4fr 2fr 2fr 2fr 1fr' },
             gap: { xs: 2.5, md: 3 },
             alignItems: 'start',
             pb: 4,
@@ -91,8 +96,31 @@ export default function Footer() {
               <Box component="nav" aria-label={col.title}>
                 <Box component="ul" sx={{ listStyle: 'none', m: 0, p: 0 }}>
                   {col.links.map((link) => (
-                    <Box component="li" key={link.label} sx={{ mb: 0.7, color: 'rgba(255,255,255,0.66)', fontSize: '0.94rem' }}>
-                      <Link href={link.href} underline="none" sx={{ color: 'inherit', '&:hover': { color: 'gold.main' } }}>
+                    <Box component="li" key={link.label} sx={{ mb: 0.9 }}>
+                      <Link
+                        href={link.href}
+                        underline="none"
+                        target={link.href.startsWith('http') ? '_blank' : undefined}
+                        rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                        sx={{
+                          display: 'flex', alignItems: 'center', gap: 0.8,
+                          color: 'rgba(255,255,255,0.72)', transition: 'color 0.25s ease, transform 0.25s ease',
+                          '&:hover': { color: 'gold.main', transform: 'translateX(3px)' },
+                        }}
+                      >
+                        {link.logo && (
+                          <Box
+                            component="span"
+                            sx={{
+                              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                              width: 44, height: 30, flex: 'none', borderRadius: '0.4rem',
+                              bgcolor: 'rgba(255,255,255,0.95)', px: 0.7,
+                              boxShadow: '0 2px 6px rgba(0,0,0,0.18)',
+                            }}
+                          >
+                            <Box component="img" src={link.logo} alt="" loading="lazy" sx={{ maxWidth: '100%', maxHeight: 22, objectFit: 'contain', display: 'block' }} />
+                          </Box>
+                        )}
                         {link.label}
                       </Link>
                     </Box>
