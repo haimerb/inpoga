@@ -16,9 +16,9 @@ const footerLinkCol = [
     { label: 'Galería', href: '#galeria' },
   ]},
   { title: 'Enlaces de interés', links: [
-    { label: 'Cali', href: 'https://www.cali.gov.co', logo: '/assets/institucional/cali.svg' },
-    { label: 'DIAN', href: 'https://www.dian.gov.co', logo: '/assets/institucional/dian.svg' },
-    { label: 'CCC', href: 'https://www.ccc.org.co', logo: '/assets/institucional/ccc.svg' },
+    { label: 'Cali', href: 'https://www.cali.gov.co', logo: '/assets/institucional/cali.png' },
+    { label: 'DIAN', href: 'https://www.dian.gov.co', logo: '/assets/institucional/dian.png' },
+    { label: 'CCC', href: 'https://www.ccc.org.co', logo: '/assets/institucional/ccc.png' },
   ]},
 ]
 
