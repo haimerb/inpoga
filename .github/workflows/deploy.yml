@@ -62,8 +62,10 @@ jobs:
         run: |
           mkdir -p /tmp/ftpcheck
           for p in "." "public_html"; do
-            echo "=== descargando /$p/index.html ==="
-            curl -k --ssl-reqd --connect-timeout 15 --max-time 90 -u "${FTP_USERNAME}:${FTP_PASSWORD}" -o "/tmp/ftpcheck/index-${p//\//_}.html" "ftp://${FTP_SERVER}/${p}/index.html" 2>/dev/null
+            tgt="${p}"
+            [ "$p" = "." ] && tgt="."
+            echo "=== descargando /${tgt}/index.html ==="
+            curl -v --ftp-ssl --ciphers DEFAULT@SECLEVEL=1 --connect-timeout 15 --max-time 90 -u "${FTP_USERNAME}:${FTP_PASSWORD}" -o "/tmp/ftpcheck/index-${p//\//_}.html" "ftp://${FTP_SERVER}/${tgt}/index.html" 2>&1 | grep -E "Connected|error|Error|RETR|229|230|550|Failed|PBSZ|new connections|Passive" | head -8
             if [ -s "/tmp/ftpcheck/index-${p//\//_}.html" ]; then
               echo "hash: $(sha256sum /tmp/ftpcheck/index-${p//\//_}.html | cut -d' ' -f1)"
               echo "refs: $(grep -oE 'index-[A-Za-z0-9_-]+\.js' /tmp/ftpcheck/index-${p//\//_}.html | sort -u | head -3)"
