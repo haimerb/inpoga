@@ -41,6 +41,7 @@ jobs:
           cp public/site.webmanifest dist/ 2>/dev/null || true
           cp public/robots.txt dist/ 2>/dev/null || true
           cp public/sitemap.xml dist/ 2>/dev/null || true
+          echo "marker-$(date -u +%s)" > dist/marker-unico-0913.txt
 
       - name: Verify secrets
         env:
@@ -53,21 +54,6 @@ jobs:
           echo "FTP_USERNAME length: ${#FTP_USERNAME}"
           echo "FTP_PASSWORD length: ${#FTP_PASSWORD}"
           echo "====================="
-
-      - name: Debug FTP listing
-        env:
-          FTP_SERVER: 148.72.0.96
-          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-        run: |
-          for d in "" "public_html" "www" "html" "domains" "domains/corpogaviotas.org" "domains/corpogaviotas.org/public_html"; do
-            url="ftp://${FTP_SERVER}/"
-            [ -n "$d" ] && url="ftp://${FTP_SERVER}/${d}/"
-            out=$(curl -skS --ssl-reqd --connect-timeout 15 --max-time 40 -u "${FTP_USERNAME}:${FTP_PASSWORD}" "$url" 2>&1)
-            echo "=== /${d} ==="
-            echo "$out" | grep -cE "^-|^d" | xargs echo "  entradas:"
-            echo "$out" | grep -E "index.html|favicon|assets|public_html|sync-state" | head -6
-          done
 
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
